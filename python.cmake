@@ -32,12 +32,9 @@ else()
     message(FATAL_ERROR "Python requires GNU Make.")
   endif()
 
-  include(bzip2.cmake)
-  include(expat.cmake)
-  include(ffi.cmake)
-  include(ssl.cmake)
-  include(xz.cmake)
-  include(zlib.cmake)
+  foreach(l bzip2 expat ffi readline ssl xz zlib)
+    include(${l}.cmake)
+  endforeach()
 
   ExternalProject_Add(python
   URL ${python_url}
@@ -48,7 +45,7 @@ else()
   TEST_COMMAND ""
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 15
-  DEPENDS "bzip2;expat;ffi;ssl;xz;zlib"
+  DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
   )
 
 endif()

@@ -2,7 +2,7 @@
 
 Build Python and its prerequisite libraries from CMake ExternalProject.
 
-The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: bzip2, expat, ffi, ssl, xz, zlib.
+The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: bzip2, expat, ffi, readline, ssl, xz, zlib.
 
 ```sh
 cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
