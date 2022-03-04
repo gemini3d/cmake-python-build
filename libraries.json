@@ -1,0 +1,30 @@
+{
+"python": {
+  "url": "https://www.python.org/ftp/python/3.9.10/Python-3.9.10.tar.xz",
+  "sha256": "0a8fbfb5287ebc3a13e9baf3d54e08fa06778ffeccf6311aef821bb3a6586cc8"
+},
+"bzip2": {
+  "url": "https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz",
+  "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269"
+},
+"expat": {
+  "git": "https://github.com/libexpat/libexpat",
+  "tag": "R_2_4_6"
+},
+"ffi": {
+  "url": "https://github.com/libffi/libffi/archive/refs/tags/v3.4.2.tar.gz",
+  "sha256": "0acbca9fd9c0eeed7e5d9460ae2ea945d3f1f3d48e13a4c54da12c7e0d23c313"
+},
+"ssl": {
+  "git": "https://github.com/openssl/openssl.git",
+  "tag": "OpenSSL_1_1_1m"
+},
+"xz": {
+  "url": "https://tukaani.org/xz/xz-5.2.5.tar.xz",
+  "sha256": "3e1e518ffc912f86608a8cb35e4bd41ad1aec210df2a47aaa1f95e7f5576ef56"
+},
+"zlib": {
+  "url" : "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
+  "sha256": "8258b75a72303b661a238047cb348203d88d9dddf85d480ed885f375916fcab6"
+},
+}
