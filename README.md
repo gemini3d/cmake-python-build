@@ -21,3 +21,10 @@ Python uses Autotools on most platforms except Windows where Visual Studio is us
 The libraries need to be built with specific options and the forums are full of suggestions for tweaking Python build scripts etc.
 This CMake project elides those issues for Linux platforms at least.
 In the near future we intend this project to work with MacOS as well.
+
+## Compilers
+
+Tested on Linux with compilers including:
+
+* GCC 4.8 and newer
+* Intel oneAPI (icx / icpx)
