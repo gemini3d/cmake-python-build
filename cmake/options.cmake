@@ -8,6 +8,8 @@ else()
   set(EXTPROJ_GEN ${CMAKE_GENERATOR})
 endif()
 
+cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
+
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")

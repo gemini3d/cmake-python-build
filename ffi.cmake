@@ -9,10 +9,6 @@ if(libffi)
   return()
 endif()
 
-if(NOT MAKE_EXECUTABLE)
-  message(FATAL_ERROR "FFI requires GNU Make.")
-endif()
-
 string(JSON ffi_url GET ${json_meta} ffi url)
 string(JSON ffi_sha256 GET ${json_meta} ffi sha256)
 

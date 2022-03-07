@@ -8,16 +8,13 @@ VERSION 1.0.0
 
 include(ExternalProject)
 
-include(options.cmake)
+include(cmake/options.cmake)
 
 # -- main program
 
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
-find_program(MAKE_EXECUTABLE
-NAMES gmake make
-DOC "GNU Make (or compatible)"
-)
+find_package(Autotools)
 
 set(LDFLAGS $ENV{LDFLAGS})
 foreach(l lib lib64)

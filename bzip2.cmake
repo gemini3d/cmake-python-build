@@ -9,10 +9,6 @@ if(BZIP2_FOUND)
   return()
 endif()
 
-if(NOT MAKE_EXECUTABLE)
-  message(FATAL_ERROR "Bzip2 requires GNU Make.")
-endif()
-
 string(JSON bzip2_url GET ${json_meta} bzip2 url)
 string(JSON bzip2_sha256 GET ${json_meta} bzip2 sha256)
 

@@ -22,15 +22,16 @@ if(WIN32)
 else()
   # Linux prereqs: https://devguide.python.org/setup/#linux
 
+  if(NOT Autotools_FOUND)
+    message(FATAL_ERROR "Python on Unix-like systems needs Autotools")
+  endif()
+
   set(python_args
   --prefix=${CMAKE_INSTALL_PREFIX}
   CC=${CMAKE_C_COMPILER}
   CXX=${CMAKE_CXX_COMPILER}
   )
 
-  if(NOT MAKE_EXECUTABLE)
-    message(FATAL_ERROR "Python requires GNU Make.")
-  endif()
 
   foreach(l bzip2 expat ffi readline ssl xz zlib)
     include(${l}.cmake)
