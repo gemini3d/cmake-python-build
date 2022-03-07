@@ -2,10 +2,10 @@
 include(ExternalProject)
 
 if(find)
-  find_library(libxz NAMES xz)
+  find_package(LibLZMA)
 endif()
 
-if(libxz)
+if(LIBLZMA_FOUND)
   add_custom_target(xz)
   return()
 endif()
