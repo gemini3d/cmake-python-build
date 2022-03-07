@@ -23,7 +23,21 @@ PREFIX=${CMAKE_INSTALL_PREFIX}
 
 set(bzip2_cflags "CFLAGS=-fPIC -O2 -D_FILE_OFFSET_BITS=64")
 
+# MacOS missing stdlib.h
+if(DEFINED ENV{CFLAGS})
+  string(APPEND bzip2_cflags " $ENV{CFLAGS}")
+endif()
 
+find_path(sysinc
+NAMES stdlib.h
+PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+)
+if(sysinc)
+  string(APPEND bzip2_cflags " -I${sysinc}")
+endif()
+
+
+# build
 ExternalProject_Add(bzip2
 URL ${bzip2_url}
 URL_HASH SHA256=${bzip2_sha256}
