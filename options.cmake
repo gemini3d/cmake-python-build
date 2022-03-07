@@ -1,5 +1,7 @@
 option(find "search for packages" on)
 
+set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED true)
+
 if(CMAKE_GENERATOR STREQUAL "Ninja Multi-Config")
   set(EXTPROJ_GEN "Ninja")
 else()
