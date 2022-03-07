@@ -18,8 +18,6 @@ string(JSON ffi_sha256 GET ${json_meta} ffi sha256)
 
 set(ffi_args
 --prefix=${CMAKE_INSTALL_PREFIX}
-CC=${CMAKE_C_COMPILER}
-CXX=${CMAKE_CXX_COMPILER}
 --disable-docs
 )
 

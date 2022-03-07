@@ -8,7 +8,7 @@
   "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269"
 },
 "expat": {
-  "git": "https://github.com/libexpat/libexpat",
+  "git": "https://github.com/libexpat/libexpat.git",
   "tag": "R_2_4_6"
 },
 "ffi": {
@@ -30,5 +30,5 @@
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
   "sha256": "8258b75a72303b661a238047cb348203d88d9dddf85d480ed885f375916fcab6"
-},
+}
 }

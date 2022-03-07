@@ -14,7 +14,6 @@ string(JSON readline_sha256 GET ${json_meta} readline sha256)
 
 set(readline_args
 --prefix=${CMAKE_INSTALL_PREFIX}
-CC=${CMAKE_C_COMPILER}
 )
 
 
