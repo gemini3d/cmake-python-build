@@ -16,9 +16,10 @@ set(ssl_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 --openssldir=${CMAKE_INSTALL_PREFIX}
 CC=${CMAKE_C_COMPILER}
---no-ssl2
---no-weak-ssl-ciphers
 )
+# bad options?
+# --no-ssl2
+# --no-weak-ssl-ciphers
 
 ExternalProject_Add(ssl
 GIT_REPOSITORY ${ssl_url}
