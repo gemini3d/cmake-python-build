@@ -15,6 +15,7 @@ string(JSON xz_sha256 GET ${json_meta} xz sha256)
 
 set(xz_args
 --prefix=${CMAKE_INSTALL_PREFIX}
+CC=${CC}
 )
 
 

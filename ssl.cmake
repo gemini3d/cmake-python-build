@@ -16,6 +16,7 @@ string(JSON ssl_tag GET ${json_meta} ssl tag)
 set(ssl_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 --openssldir=${CMAKE_INSTALL_PREFIX}
+CC=${CC}
 )
 # bad options?
 # --no-ssl2

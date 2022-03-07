@@ -16,6 +16,7 @@ string(JSON ffi_sha256 GET ${json_meta} ffi sha256)
 set(ffi_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 --disable-docs
+CC=${CC}
 )
 
 

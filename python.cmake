@@ -28,10 +28,9 @@ else()
 
   set(python_args
   --prefix=${CMAKE_INSTALL_PREFIX}
-  CC=${CMAKE_C_COMPILER}
-  CXX=${CMAKE_CXX_COMPILER}
+  CC=${CC}
+  CXX=${CXX}
   )
-
 
   foreach(l bzip2 expat ffi readline ssl xz zlib)
     include(${l}.cmake)
@@ -40,7 +39,7 @@ else()
   ExternalProject_Add(python
   URL ${python_url}
   URL_HASH SHA256=${python_sha256}
-  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} LDFLAGS=${LDFLAGS}
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${CMAKE_C_FLAGS} LDFLAGS=${LDFLAGS}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
   TEST_COMMAND ""

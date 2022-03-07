@@ -10,6 +10,22 @@ endif()
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
+if(NOT CC)
+  if(DEFINED ENV{CC})
+    set(CC $ENV{CC})
+  else()
+    cmake_path(GET CMAKE_C_COMPILER FILENAME CC)
+  endif()
+endif()
+
+if(NOT CXX)
+  if(DEFINED ENV{CXX})
+    set(CXX $ENV{CXX})
+  else()
+    cmake_path(GET CMAKE_CXX_COMPILER FILENAME CXX)
+  endif()
+endif()
+
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
