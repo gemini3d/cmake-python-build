@@ -16,11 +16,26 @@ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
 find_package(Autotools)
 
+# -- libraries, especially needed for Python Autotools
+
 set(LDFLAGS $ENV{LDFLAGS})
 foreach(l lib lib64)
   string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${CMAKE_INSTALL_PREFIX}/${l}")
   string(APPEND LDFLAGS " -Wl,-rpath,${CMAKE_INSTALL_PREFIX}/${l}")
 endforeach()
+
+if(APPLE)
+  find_library(macsys
+  NAMES System
+  PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+  )
+  if(macsys)
+    cmake_path(GET macsys PARENT_PATH lmac)
+    string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${lmac}")
+    string(APPEND LDFLAGS " -Wl,-rpath,${lmac}")
+  endif()
+endif()
+
 string(APPEND CMAKE_EXE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 string(APPEND CMAKE_SHARED_LINKER_FLAGS_INIT " ${LDFLAGS}")
 string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
