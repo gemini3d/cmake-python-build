@@ -1,5 +1,7 @@
 # installs Expat
 
+include(ExternalProject)
+
 if(find)
   find_package(EXPAT)
 endif()

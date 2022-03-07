@@ -1,4 +1,5 @@
 # xz for python lzma module
+include(ExternalProject)
 
 if(find)
   find_library(libxz NAMES xz)
