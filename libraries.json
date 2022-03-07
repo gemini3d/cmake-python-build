@@ -4,8 +4,8 @@
   "sha256": "0a8fbfb5287ebc3a13e9baf3d54e08fa06778ffeccf6311aef821bb3a6586cc8"
 },
 "bzip2": {
-  "url": "https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz",
-  "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269"
+  "git": "https://github.com/gemini3d/bzip2-cmake.git",
+  "tag": "v1.0.8.0"
 },
 "expat": {
   "git": "https://github.com/libexpat/libexpat.git",

@@ -11,26 +11,23 @@ endif()
 
 include(FetchContent)
 
-string(JSON bzip2_url GET ${json_meta} bzip2 url)
-string(JSON bzip2_sha256 GET ${json_meta} bzip2 sha256)
+string(JSON bzip2_url GET ${json_meta} bzip2 git)
+string(JSON bzip2_tag GET ${json_meta} bzip2 tag)
 
-
-FetchContent_Declare(bz2
-URL ${bzip2_url}
-URL_HASH SHA256=${bzip2_sha256}
-UPDATE_DISCONNECTED true  # avoid constant rebuild
+set(bzip2_args
+-DBUILD_UTILS:BOOL=false
+-DBUILD_TESTING:BOOL=false
+-DCMAKE_BUILD_TYPE=Release
+-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
+-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=on
+-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}
 )
 
-FetchContent_Populate(bz2)
-
-add_library(bzip2
-${bz2_SOURCE_DIR}/blocksort.c
-${bz2_SOURCE_DIR}/huffman.c
-${bz2_SOURCE_DIR}/crctable.c
-${bz2_SOURCE_DIR}/randtable.c
-${bz2_SOURCE_DIR}/compress.c
-${bz2_SOURCE_DIR}/decompress.c
-${bz2_SOURCE_DIR}/bzlib.c
+# build
+ExternalProject_Add(bzip2
+GIT_REPOSITORY ${bzip2_url}
+GIT_TAG ${bzip2_tag}
+CMAKE_ARGS ${bzip2_args}
+CONFIGURE_HANDLED_BY_BUILD ON
+INACTIVITY_TIMEOUT 15
 )
-target_compile_definitions(bzip2 PRIVATE -D_FILE_OFFSET_BITS=64)
-set_target_properties(bzip2 PROPERTIES POSITION_INDEPENDENT_CODE true)
