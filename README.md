@@ -19,12 +19,16 @@ That makes binaries including: ~/mydir/bin/[python3,pip3]
 
 Python uses Autotools on most platforms except Windows where Visual Studio is used.
 The libraries need to be built with specific options and the forums are full of suggestions for tweaking Python build scripts etc.
-This CMake project elides those issues for Linux platforms at least.
-In the near future we intend this project to work with MacOS as well.
+This CMake project elides those issues for Linux/MacOS platforms at least.
 
 ## Compilers
 
-Tested on Linux with compilers including:
+Tested on Linux and MacOS with compilers including:
 
-* GCC 4.8 and newer
-* Intel oneAPI (icx / icpx)
+* Apple Clang (via `CC=gcc` and `CXX=g++`)
+* Linux: GCC 4.8 and newer
+* Linux Intel oneAPI (`CC=icx` and `CXX=icpx`)
+
+NOTE: Autotools compiler hints are touchy.
+On MacOS, we strongly suggest using `CC=gcc` and `CXX=g++` despite this referring to Clang to avoid problems.
+Even version specifiers like `CC=gcc-11` breaks Autotools.
