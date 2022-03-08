@@ -22,7 +22,7 @@ CC=${CC}
 ExternalProject_Add(readline
 URL ${readline_url}
 URL_HASH SHA256=${readline_sha256}
-CONFIGURE_COMMAND <SOURCE_DIR>/configure ${readline_args}
+CONFIGURE_COMMAND <SOURCE_DIR>/configure ${readline_args} CFLAGS=${CMAKE_C_FLAGS} LDFLAGS=${LDFLAGS}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
 TEST_COMMAND ""

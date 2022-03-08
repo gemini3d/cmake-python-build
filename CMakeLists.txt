@@ -24,26 +24,26 @@ foreach(l lib lib64)
   string(APPEND LDFLAGS " -Wl,-rpath,${CMAKE_INSTALL_PREFIX}/${l}")
 endforeach()
 
-# if(APPLE)
-#   find_path(macinc
-#   NAMES stdio.h
-#   PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
-#   )
-#   if(macinc)
-#     string(APPEND CMAKE_C_FLAGS " -I${macinc}")
-#   endif()
+if(APPLE)
+  find_path(macinc
+  NAMES stdio.h
+  PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+  )
+  if(macinc)
+    string(APPEND CMAKE_C_FLAGS " -I${macinc}")
+  endif()
 
-#   find_library(macsys
-#   NAMES System
-#   NO_DEFAULT_PATH
-#   PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
-#   )
-#   if(macsys)
-#     cmake_path(GET macsys PARENT_PATH lmac)
-#     string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${lmac}")
-#     string(APPEND LDFLAGS " -Wl,-rpath,${lmac}")
-#   endif()
-# endif()
+  find_library(macsys
+  NAMES System
+  NO_DEFAULT_PATH
+  PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+  )
+  if(macsys)
+    cmake_path(GET macsys PARENT_PATH lmac)
+    string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${lmac}")
+    string(APPEND LDFLAGS " -Wl,-rpath,${lmac}")
+  endif()
+endif()
 
 string(APPEND CMAKE_EXE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 string(APPEND CMAKE_SHARED_LINKER_FLAGS_INIT " ${LDFLAGS}")
