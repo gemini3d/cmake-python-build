@@ -25,14 +25,15 @@ foreach(l lib lib64)
 endforeach()
 
 if(APPLE)
-  # find_path(macinc
-  # NAMES stdio.h
-  # PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
-  # )
-  # if(macinc)
-  #   string(APPEND CMAKE_C_FLAGS " -I${macinc}")
-  # endif()
-  # Hinting macinc breaks readline etc. with conflicting headers
+  find_path(macinc
+  NAMES stdio.h
+  PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+  )
+  if(macinc)
+    string(APPEND CMAKE_C_FLAGS " -I${macinc}")
+  endif()
+  # Clang: hinting macinc breaks readline etc. with conflicting headers
+  # GCC: needs the macinc hints
 
   find_library(macsys
   NAMES System

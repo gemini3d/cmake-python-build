@@ -10,16 +10,16 @@ endif()
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
+# autotools can be confused if generic CC=cc or CXX=c++ is used
 if(NOT CC)
   if(DEFINED ENV{CC})
     set(CC $ENV{CC})
   else()
     cmake_path(GET CMAKE_C_COMPILER FILENAME CC)
-    if(CC STREQUAL cc)
-      # autotools can be confused if generic CC=cc is used
-      unset(CC)
-    endif()
   endif()
+endif()
+if(CC STREQUAL cc)
+  unset(CC)
 endif()
 
 if(NOT CXX)
@@ -27,11 +27,10 @@ if(NOT CXX)
     set(CXX $ENV{CXX})
   else()
     cmake_path(GET CMAKE_CXX_COMPILER FILENAME CXX)
-    if(CXX STREQUAL c++)
-      # autotools can be confused if generic is used
-      unset(CXX)
-    endif()
   endif()
+endif()
+if(CXX STREQUAL c++)
+  unset(CXX)
 endif()
 
 # --- auto-ignore build directory
