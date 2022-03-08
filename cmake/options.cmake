@@ -15,6 +15,10 @@ if(NOT CC)
     set(CC $ENV{CC})
   else()
     cmake_path(GET CMAKE_C_COMPILER FILENAME CC)
+    if(CC STREQUAL cc)
+      # autotools can be confused if generic CC=cc is used
+      unset(CC)
+    endif()
   endif()
 endif()
 
@@ -23,6 +27,10 @@ if(NOT CXX)
     set(CXX $ENV{CXX})
   else()
     cmake_path(GET CMAKE_CXX_COMPILER FILENAME CXX)
+    if(CXX STREQUAL c++)
+      # autotools can be confused if generic is used
+      unset(CXX)
+    endif()
   endif()
 endif()
 
