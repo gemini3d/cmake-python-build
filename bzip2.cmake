@@ -1,14 +1,5 @@
 # install bzip2, needed for Python xarray/pandas
 
-if(find)
-  find_package(BZip2)
-endif()
-
-if(BZIP2_FOUND)
-  add_custom_target(bzip2)
-  return()
-endif()
-
 include(FetchContent)
 
 string(JSON bzip2_url GET ${json_meta} bzip2 git)
