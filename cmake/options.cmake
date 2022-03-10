@@ -10,7 +10,6 @@ endif()
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
-# autotools can be confused if generic CC=cc or CXX=c++ is used
 if(NOT CC)
   if(DEFINED ENV{CC})
     set(CC $ENV{CC})
@@ -18,7 +17,12 @@ if(NOT CC)
     cmake_path(GET CMAKE_C_COMPILER FILENAME CC)
   endif()
 endif()
+# autotools can be confused if generic CC=cc or CXX=c++ is used
 if(CC STREQUAL cc)
+  unset(CC)
+endif()
+# autotools can be confused if compiler version number is included e.g. gcc-11
+if(CC MATCHES "[0-9]+$")
   unset(CC)
 endif()
 
@@ -30,6 +34,9 @@ if(NOT CXX)
   endif()
 endif()
 if(CXX STREQUAL c++)
+  unset(CXX)
+endif()
+if(CXX MATCHES "[0-9]+$")
   unset(CXX)
 endif()
 
