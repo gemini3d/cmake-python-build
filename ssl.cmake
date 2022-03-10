@@ -22,7 +22,7 @@ if(find)
   find_package(OpenSSL)
 endif(find)
 
-if(OpenSSL_FOUND)
+if(OPENSSL_FOUND)
   add_custom_target(ssl)
   return()
 endif()

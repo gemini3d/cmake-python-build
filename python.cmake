@@ -26,20 +26,31 @@ else()
     message(FATAL_ERROR "Python on Unix-like systems needs Autotools")
   endif()
 
+  # prereqs
+  foreach(l bzip2 expat ffi readline ssl xz zlib)
+    include(${l}.cmake)
+  endforeach()
+
+  # Python build
   set(python_args
   --prefix=${CMAKE_INSTALL_PREFIX}
   CC=${CC}
   CXX=${CXX}
   )
 
-  foreach(l bzip2 expat ffi readline ssl xz zlib)
-    include(${l}.cmake)
-  endforeach()
+  if(OPENSSL_FOUND)
+    cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
+    list(APPEND python_args --with-openssl=${openssl_dir})
+  else()
+    list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
+  endif()
+
+  set(python_cflags "${CMAKE_C_FLAGS}")
 
   ExternalProject_Add(python
   URL ${python_url}
   URL_HASH SHA256=${python_sha256}
-  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${CMAKE_C_FLAGS} LDFLAGS=${LDFLAGS}
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${LDFLAGS}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
   TEST_COMMAND ""
