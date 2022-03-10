@@ -27,7 +27,7 @@ else()
   endif()
 
   # prereqs
-  foreach(l bzip2 expat ffi readline ssl xz zlib)
+  foreach(l bzip2 expat ffi lzma readline ssl zlib)
     include(${l}.cmake)
   endforeach()
 
@@ -38,6 +38,9 @@ else()
   CXX=${CXX}
   )
 
+  set(python_cflags "${CMAKE_C_FLAGS}")
+  set(python_ldflags "${LDFLAGS}")
+
   if(OPENSSL_FOUND)
     cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
     list(APPEND python_args --with-openssl=${openssl_dir})
@@ -45,12 +48,16 @@ else()
     list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
   endif()
 
-  set(python_cflags "${CMAKE_C_FLAGS}")
+  if(LIBLZMA_FOUND)
+    string(APPEND python_cflags " -I${LIBLZMA_INCLUDE_DIRS}")
+    cmake_path(GET LIBLZMA_LIBRARIES PARENT_PATH lzma_libdir)
+    string(APPEND python_ldflags " -L${lzma_libdir}")
+  endif()
 
   ExternalProject_Add(python
   URL ${python_url}
   URL_HASH SHA256=${python_sha256}
-  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${LDFLAGS}
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
   TEST_COMMAND ""
