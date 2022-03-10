@@ -1,6 +1,26 @@
 
 cmake_minimum_required(VERSION 3.20...3.23)
 
+# -- must override compiler to be gcc on Linux and clang on Macos.
+# otherwise, Autotools is too shaky.
+# Intel complier icx/icpx works but is more than 100x slower to build.
+if(APPLE)
+  set(CC clang)
+  set(CMAKE_C_COMPILER clang)
+  set(ENV{CC} clang)
+  set(CXX clang++)
+  set(CMAKE_CXX_COMPILER clang++)
+  set(ENV{CXX} clang++)
+elseif(UNIX)
+  set(CC gcc)
+  set(CMAKE_C_COMPILER gcc)
+  set(ENV{CC} gcc)
+  set(CXX g++)
+  set(CMAKE_CXX_COMPILER g++)
+  set(ENV{CXX} g++)
+endif()
+
+
 project(BuildPython
 LANGUAGES C CXX
 VERSION 1.0.0

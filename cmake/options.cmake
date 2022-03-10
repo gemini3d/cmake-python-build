@@ -10,36 +10,6 @@ endif()
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
-if(NOT CC)
-  if(DEFINED ENV{CC})
-    set(CC $ENV{CC})
-  else()
-    cmake_path(GET CMAKE_C_COMPILER FILENAME CC)
-  endif()
-endif()
-# autotools can be confused if generic CC=cc or CXX=c++ is used
-if(CC STREQUAL cc)
-  unset(CC)
-endif()
-# autotools can be confused if compiler version number is included e.g. gcc-11
-if(CC MATCHES "[0-9]+$")
-  unset(CC)
-endif()
-
-if(NOT CXX)
-  if(DEFINED ENV{CXX})
-    set(CXX $ENV{CXX})
-  else()
-    cmake_path(GET CMAKE_CXX_COMPILER FILENAME CXX)
-  endif()
-endif()
-if(CXX STREQUAL c++)
-  unset(CXX)
-endif()
-if(CXX MATCHES "[0-9]+$")
-  unset(CXX)
-endif()
-
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
