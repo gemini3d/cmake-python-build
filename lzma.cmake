@@ -1,14 +1,8 @@
 # xz for python lzma module
+# We don't find liblzma because some systems e.g. MacOS have system lzma incompatible with Python build.
+# LZMA is important to some popular Python scientific packages, so we want to be sure it will work.
+
 include(ExternalProject)
-
-if(find)
-  find_package(LibLZMA)
-endif()
-
-if(LIBLZMA_FOUND)
-  add_custom_target(xz)
-  return()
-endif()
 
 string(JSON xz_url GET ${json_meta} xz url)
 string(JSON xz_sha256 GET ${json_meta} xz sha256)
@@ -18,7 +12,6 @@ set(xz_args
 --disable-doc
 CC=${CC}
 )
-
 
 ExternalProject_Add(xz
 URL ${xz_url}

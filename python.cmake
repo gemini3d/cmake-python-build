@@ -48,12 +48,6 @@ else()
     list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
   endif()
 
-  if(LIBLZMA_FOUND)
-    string(APPEND python_cflags " -I${LIBLZMA_INCLUDE_DIRS}")
-    cmake_path(GET LIBLZMA_LIBRARIES PARENT_PATH lzma_libdir)
-    string(APPEND python_ldflags " -L${lzma_libdir}")
-  endif()
-
   ExternalProject_Add(python
   URL ${python_url}
   URL_HASH SHA256=${python_sha256}
