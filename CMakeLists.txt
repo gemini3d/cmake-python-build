@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.20...3.23)
 
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
-# Intel complier icx/icpx works but is more than 100x slower to build.
+# Intel compiler icx/icpx works but is more than 100x slower to build.
 if(APPLE)
   set(CC clang)
   set(CMAKE_C_COMPILER clang)
