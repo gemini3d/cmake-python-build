@@ -2,7 +2,8 @@
 
 Build Python and its prerequisite libraries from CMake ExternalProject.
 
-The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: bzip2, expat, ffi, readline, ssl, xz, zlib.
+The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: expat, ffi, readline, ssl,  zlib.
+Because of broken system libraries and the fast build time, we always build LZMA and BZip2.
 
 ```sh
 cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
@@ -25,10 +26,8 @@ This CMake project elides those issues for Linux/MacOS platforms at least.
 
 Tested on Linux and MacOS with compilers including:
 
-* Apple Clang (via `CC=gcc` and `CXX=g++`)
+* Apple Clang
 * Linux: GCC 4.8 and newer
-* Linux Intel oneAPI (`CC=icx` and `CXX=icpx`)
 
-NOTE: Autotools compiler hints are touchy.
-On MacOS, we strongly suggest using `CC=gcc` and `CXX=g++` despite this referring to Clang to avoid problems.
-Even version specifiers like `CC=gcc-11` breaks Autotools.
+The CMakeLists.txt automatically forces "clang" on MacOS and "gcc" on Linux.
+This seemed to be the most robust choice, as Autotools failed to configure with choices like "gcc-*version*", Intel "icc" failed, and Intel "icx" took 100x longer than GCC to build.
