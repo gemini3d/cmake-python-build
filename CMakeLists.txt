@@ -36,6 +36,8 @@ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
 find_package(Autotools)
 
+include(libtool.cmake)
+
 # -- libraries, especially needed for Python Autotools
 
 set(LDFLAGS $ENV{LDFLAGS})

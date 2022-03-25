@@ -57,7 +57,7 @@ else()
   TEST_COMMAND ""
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 15
-  DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
+  DEPENDS "libtool;bzip2;expat;ffi;readline;ssl;xz;zlib"
   )
 
 endif()
