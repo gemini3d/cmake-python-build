@@ -1,4 +1,4 @@
-# installs CMAKE_INSTALL_PREFIX/
+# installs CMAKE_INSTALL_PREFIX/bin/libtool[ize]
 include(ExternalProject)
 
 if(LIBTOOL_EXECUTABLE)
