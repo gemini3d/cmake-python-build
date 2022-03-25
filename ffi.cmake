@@ -10,8 +10,8 @@ if(libffi)
   return()
 endif()
 
-string(JSON ffi_url GET ${json_meta} ffi url)
-string(JSON ffi_sha256 GET ${json_meta} ffi sha256)
+string(JSON ffi_url GET ${json_meta} ffi git)
+string(JSON ffi_tag GET ${json_meta} ffi tag)
 
 set(ffi_args
 --prefix=${CMAKE_INSTALL_PREFIX}
@@ -21,8 +21,9 @@ CC=${CC}
 
 
 ExternalProject_Add(ffi
-URL ${ffi_url}
-URL_HASH SHA256=${ffi_sha256}
+GIT_REPOSITORY ${ffi_url}
+GIT_TAG ${ffi_tag}
+GIT_SHALLOW true
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${ffi_args} CFLAGS=${CMAKE_C_FLAGS} LDFLAGS=${LDFLAGS}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install

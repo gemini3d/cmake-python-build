@@ -1,7 +1,7 @@
 {
 "python": {
-  "url": "https://www.python.org/ftp/python/3.9.10/Python-3.9.10.tar.xz",
-  "sha256": "0a8fbfb5287ebc3a13e9baf3d54e08fa06778ffeccf6311aef821bb3a6586cc8"
+  "url": "https://www.python.org/ftp/python/3.9.12/Python-3.9.12.tar.xz",
+  "sha256": "2cd94b20670e4159c6d9ab57f91dbf255b97d8c1a1451d1c35f4ec1968adf971"
 },
 "bzip2": {
   "git": "https://github.com/gemini3d/bzip2-cmake.git",
@@ -9,11 +9,11 @@
 },
 "expat": {
   "git": "https://github.com/libexpat/libexpat.git",
-  "tag": "R_2_4_6"
+  "tag": "R_2_4_7"
 },
 "ffi": {
-  "url": "https://github.com/libffi/libffi/archive/refs/tags/v3.4.2.tar.gz",
-  "sha256": "0acbca9fd9c0eeed7e5d9460ae2ea945d3f1f3d48e13a4c54da12c7e0d23c313"
+  "git": "https://github.com/libffi/libffi.git",
+  "tag": "v3.4.2"
 },
 "readline": {
   "url": "ftp://ftp.cwru.edu/pub/bash/readline-8.1.tar.gz",
@@ -21,7 +21,7 @@
 },
 "ssl": {
   "git": "https://github.com/openssl/openssl.git",
-  "tag": "OpenSSL_1_1_1m"
+  "tag": "OpenSSL_1_1_1n"
 },
 "xz": {
   "git": "https://github.com/xz-mirror/xz.git",

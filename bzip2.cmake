@@ -18,6 +18,7 @@ set(bzip2_args
 ExternalProject_Add(bzip2
 GIT_REPOSITORY ${bzip2_url}
 GIT_TAG ${bzip2_tag}
+GIT_SHALLOW true
 CMAKE_ARGS ${bzip2_args}
 CONFIGURE_HANDLED_BY_BUILD ON
 INACTIVITY_TIMEOUT 15
