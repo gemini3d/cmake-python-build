@@ -72,3 +72,12 @@ string(APPEND CMAKE_SHARED_LINKER_FLAGS_INIT " ${LDFLAGS}")
 string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 
 include(python.cmake)
+
+if(DEFINED ENV{CONDA_PREFIX})
+  message(STATUS "Conda Python detected as active. You may wish to
+
+    conda deactivate
+
+  to avoid conflicts with the Python build system."
+  )
+endif()
