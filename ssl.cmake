@@ -35,6 +35,9 @@ set(ssl_args
 --openssldir=${CMAKE_INSTALL_PREFIX}
 CC=${CC}
 )
+if(BUILD_SHARED_LIBS)
+  list(APPEND ssl_args shared)
+endif()
 # bad options?
 # --no-ssl2
 # --no-weak-ssl-ciphers
