@@ -1,4 +1,5 @@
 option(find "search for packages" on)
+option(BUILD_SHARED_LIBS "build shared libraries" on)
 
 set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED true)
 
