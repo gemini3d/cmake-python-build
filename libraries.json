@@ -9,7 +9,7 @@
 },
 "expat": {
   "git": "https://github.com/libexpat/libexpat.git",
-  "tag": "R_2_4_7"
+  "tag": "R_2_4_8"
 },
 "ffi": {
   "git": "https://github.com/libffi/libffi.git",
