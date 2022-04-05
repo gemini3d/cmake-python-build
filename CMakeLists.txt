@@ -23,7 +23,6 @@ endif()
 
 project(BuildPython
 LANGUAGES C CXX
-VERSION 1.0.0
 )
 
 include(ExternalProject)
