@@ -14,7 +14,7 @@ if(NOT LIBTOOL_EXECUTABLE)
   message(FATAL_ERROR "FFI needs libtool")
 endif()
 
-string(JSON ffi_url GET ${json_meta} ffi git)
+string(JSON ffi_url GET ${json_meta} ffi url)
 string(JSON ffi_tag GET ${json_meta} ffi tag)
 
 set(ffi_args

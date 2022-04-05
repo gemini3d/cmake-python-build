@@ -2,7 +2,7 @@
 
 include(FetchContent)
 
-string(JSON bzip2_url GET ${json_meta} bzip2 git)
+string(JSON bzip2_url GET ${json_meta} bzip2 url)
 string(JSON bzip2_tag GET ${json_meta} bzip2 tag)
 
 set(bzip2_args

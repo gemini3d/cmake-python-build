@@ -11,7 +11,7 @@ if(EXPAT_FOUND)
   return()
 endif()
 
-string(JSON expat_url GET ${json_meta} expat git)
+string(JSON expat_url GET ${json_meta} expat url)
 string(JSON expat_tag GET ${json_meta} expat tag)
 
 set(expat_args

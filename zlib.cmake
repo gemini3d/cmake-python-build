@@ -23,11 +23,11 @@ set(zlib_cmake_args
 # CMAKE_POSITION_INDEPENDENT_CODE=on is needed for zlib to work with Python, even when using static libs.
 
 string(JSON zlib_url GET ${json_meta} zlib url)
-string(JSON zlib_sha256 GET ${json_meta} zlib sha256)
+string(JSON zlib_tag GET ${json_meta} zlib tag)
 
 ExternalProject_Add(zlib
-URL ${zlib_url}
-URL_HASH SHA256=${zlib_sha256}
+GIT_REPOSITORY ${zlib_url}
+GIT_TAG ${zlib_tag}
 GIT_SHALLOW true
 CMAKE_ARGS ${zlib_cmake_args}
 CMAKE_GENERATOR ${EXTPROJ_GEN}

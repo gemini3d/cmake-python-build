@@ -27,7 +27,7 @@ if(OPENSSL_FOUND)
   return()
 endif()
 
-string(JSON ssl_url GET ${json_meta} ssl git)
+string(JSON ssl_url GET ${json_meta} ssl url)
 string(JSON ssl_tag GET ${json_meta} ssl tag)
 
 set(ssl_args

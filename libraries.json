@@ -4,15 +4,15 @@
   "sha256": "80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19"
 },
 "bzip2": {
-  "git": "https://github.com/gemini3d/bzip2-cmake.git",
+  "url": "https://github.com/gemini3d/bzip2-cmake.git",
   "tag": "v1.0.8.0"
 },
 "expat": {
-  "git": "https://github.com/libexpat/libexpat.git",
+  "url": "https://github.com/libexpat/libexpat.git",
   "tag": "R_2_4_8"
 },
 "ffi": {
-  "git": "https://github.com/libffi/libffi.git",
+  "url": "https://github.com/libffi/libffi.git",
   "tag": "v3.4.2"
 },
 "libtool": {
@@ -24,15 +24,15 @@
   "sha256": "f8ceb4ee131e3232226a17f51b164afc46cd0b9e6cef344be87c65962cb82b02"
 },
 "ssl": {
-  "git": "https://github.com/openssl/openssl.git",
+  "url": "https://github.com/openssl/openssl.git",
   "tag": "OpenSSL_1_1_1n"
 },
 "xz": {
-  "git": "https://github.com/xz-mirror/xz.git",
+  "url": "https://github.com/xz-mirror/xz.git",
   "tag": "v5.2.5"
 },
 "zlib": {
-  "url" : "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
-  "sha256": "8258b75a72303b661a238047cb348203d88d9dddf85d480ed885f375916fcab6"
+  "url" : "https://github.com/zlib-ng/zlib-ng.git",
+  "tag": "2.0.6"
 }
 }
