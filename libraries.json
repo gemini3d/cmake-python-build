@@ -1,7 +1,7 @@
 {
 "python": {
-  "url": "https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tar.xz",
-  "sha256": "80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19"
+  "url": "https://github.com/python/cpython.git",
+  "tag": "v3.10.4"
 },
 "bzip2": {
   "url": "https://github.com/gemini3d/bzip2-cmake.git",
@@ -16,16 +16,16 @@
   "tag": "v3.4.2"
 },
 "libtool": {
-  "url": "https://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz",
-  "sha256": "e3bd4d5d3d025a36c21dd6af7ea818a2afcd4dfc1ea5a17b39d7854bcd0c06e3"
+  "url": "https://github.com/autotools-mirror/libtool.git",
+  "tag": "v2.4.7"
 },
 "readline": {
-  "url": "https://ftp.gnu.org/gnu/readline/readline-8.1.2.tar.gz",
-  "sha256": "7589a2381a8419e68654a47623ce7dfcb756815c8fee726b98f90bf668af7bc6"
+  "url": "https://git.savannah.gnu.org/git/readline.git",
+  "tag": "readline-8.1"
 },
 "ssl": {
   "url": "https://github.com/openssl/openssl.git",
-  "tag": "OpenSSL_1_1_1n"
+  "tag": "OpenSSL_1_1_1o"
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",

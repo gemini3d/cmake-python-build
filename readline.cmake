@@ -11,7 +11,7 @@ if(libreadline)
 endif()
 
 string(JSON readline_url GET ${json_meta} readline url)
-string(JSON readline_sha256 GET ${json_meta} readline sha256)
+string(JSON readline_tag GET ${json_meta} readline tag)
 
 set(readline_args
 --prefix=${CMAKE_INSTALL_PREFIX}
@@ -20,8 +20,9 @@ CC=${CC}
 
 
 ExternalProject_Add(readline
-URL ${readline_url}
-URL_HASH SHA256=${readline_sha256}
+GIT_REPOSITORY ${readline_url}
+GIT_TAG ${readline_tag}
+GIT_SHALLOW true
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${readline_args} CFLAGS=${CMAKE_C_FLAGS} LDFLAGS=${LDFLAGS}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install

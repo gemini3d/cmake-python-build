@@ -1,5 +1,5 @@
 string(JSON python_url GET ${json_meta} python url)
-string(JSON python_sha256 GET ${json_meta} python sha256)
+string(JSON python_tag GET ${json_meta} python tag)
 
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
@@ -9,8 +9,9 @@ if(WIN32)
   endif()
 
   ExternalProject_Add(python
-  URL ${python_url}
-  URL_HASH SHA256=${python_sha256}
+  GIT_REPOSITORY ${python_url}
+  GIT_TAG ${python_tag}
+  GIT_SHALLOW true
   CONFIGURE_COMMAND ""
   BUILD_COMMAND <SOURCE_DIR>/PCBuild/build.bat
   INSTALL_COMMAND ""
@@ -49,8 +50,9 @@ else()
   endif()
 
   ExternalProject_Add(python
-  URL ${python_url}
-  URL_HASH SHA256=${python_sha256}
+  GIT_REPOSITORY ${python_url}
+  GIT_TAG ${python_tag}
+  GIT_SHALLOW true
   CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
