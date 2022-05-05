@@ -11,7 +11,8 @@ cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
 cmake --build build
 ```
 
-That makes binaries including: ~/mydir/bin/[python3,pip3]
+That makes binaries including: ~/mydir/bin/[python3,pip3].
+If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
 
 ## Why?
 

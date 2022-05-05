@@ -6,20 +6,19 @@ cmake_minimum_required(VERSION 3.20...3.23)
 # Intel compiler icx/icpx works but is more than 100x slower to build.
 if(APPLE)
   set(CC clang)
-  set(CMAKE_C_COMPILER clang)
-  set(ENV{CC} clang)
   set(CXX clang++)
-  set(CMAKE_CXX_COMPILER clang++)
-  set(ENV{CXX} clang++)
 elseif(UNIX)
   set(CC gcc)
-  set(CMAKE_C_COMPILER gcc)
-  set(ENV{CC} gcc)
   set(CXX g++)
-  set(CMAKE_CXX_COMPILER g++)
-  set(ENV{CXX} g++)
+elseif(WIN32)
+  set(CC cl)
+  set(CXX cl)
+else()
+  message(FATAL_ERROR "Unsupported platform ${CMAKE_SYSTEM_NAME}")
 endif()
 
+find_program(CMAKE_C_COMPILER NAMES ${CC} REQUIRED)
+find_program(CMAKE_CXX_COMPILER NAMES ${CXX} REQUIRED)
 
 project(BuildPython
 LANGUAGES C CXX
