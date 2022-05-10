@@ -1,5 +1,8 @@
 string(JSON python_url GET ${json_meta} python url)
-string(JSON python_tag GET ${json_meta} python tag)
+
+if(NOT python_tag)
+  string(JSON python_tag GET ${json_meta} python tag)
+endif()
 
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
