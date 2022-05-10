@@ -1,6 +1,8 @@
 option(find "search for packages" on)
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
+set(CMAKE_TLS_VERIFY ON)
+
 set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED true)
 
 if(CMAKE_GENERATOR STREQUAL "Ninja Multi-Config")
