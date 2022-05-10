@@ -40,6 +40,7 @@ else()
   --prefix=${CMAKE_INSTALL_PREFIX}
   CC=${CC}
   CXX=${CXX}
+  --with-system-expat
   )
 
   set(python_cflags "${CMAKE_C_FLAGS}")
