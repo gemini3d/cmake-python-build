@@ -12,4 +12,4 @@ string(JSON libtool_tag GET ${json_meta} libtool tag)
 set(libtool_args)
 
 
-extproj_autotools(libtool ${libtool_url} ${libtool_tag} "${libtool_args}" "")
+extproj_autotools(libtool ${libtool_url} ${libtool_tag} "${libtool_args}")

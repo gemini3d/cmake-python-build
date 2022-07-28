@@ -22,7 +22,7 @@ set(ffi_args
 )
 
 
-extproj_autotools(ffi ${ffi_url} ${ffi_tag} "${ffi_args}" "")
+extproj_autotools(ffi ${ffi_url} ${ffi_tag} "${ffi_args}")
 
 ExternalProject_Add_Step(ffi
 autogen
