@@ -7,6 +7,22 @@ set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
+# -- config checks
+
+if(NOT MSVC)
+get_property(is_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(is_multi_config)
+  if(CMAKE_GENERATOR MATCHES "Ninja")
+    set(suggest Ninja)
+  else()
+    set(suggest "Unix Makefiles")
+  endif()
+  message(FATAL_ERROR "Please use a single configuration generator like:
+  cmake -G \"${suggest}\"
+  ")
+endif()
+endif()
+
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
