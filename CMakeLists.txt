@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.20...3.23)
+cmake_minimum_required(VERSION 3.20...3.24)
 
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
@@ -27,6 +27,9 @@ LANGUAGES C CXX
 include(ExternalProject)
 
 include(cmake/options.cmake)
+
+include(cmake/ExtProjCMake.cmake)
+include(cmake/ExtProjAutotools.cmake)
 
 # -- main program
 

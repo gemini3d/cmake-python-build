@@ -30,13 +30,13 @@ endif()
 string(JSON ssl_url GET ${json_meta} ssl url)
 string(JSON ssl_tag GET ${json_meta} ssl tag)
 
-set(ssl_args
---prefix=${CMAKE_INSTALL_PREFIX}
+set(ssl_config_args
 --openssldir=${CMAKE_INSTALL_PREFIX}
+--prefix=${CMAKE_INSTALL_PREFIX}
 CC=${CC}
 )
 if(BUILD_SHARED_LIBS)
-  list(APPEND ssl_args shared)
+  list(APPEND ssl_config_args shared)
 endif()
 # bad options?
 # --no-ssl2
@@ -46,7 +46,7 @@ ExternalProject_Add(ssl
 GIT_REPOSITORY ${ssl_url}
 GIT_TAG ${ssl_tag}
 GIT_SHALLOW true
-CONFIGURE_COMMAND <SOURCE_DIR>/config ${ssl_args}
+CONFIGURE_COMMAND <SOURCE_DIR>/config ${ssl_config_args}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install_sw
 TEST_COMMAND ""

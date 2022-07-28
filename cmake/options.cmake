@@ -3,13 +3,7 @@ option(BUILD_SHARED_LIBS "build shared libraries" on)
 
 set(CMAKE_TLS_VERIFY ON)
 
-set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED true)
-
-if(CMAKE_GENERATOR STREQUAL "Ninja Multi-Config")
-  set(EXTPROJ_GEN "Ninja")
-else()
-  set(EXTPROJ_GEN ${CMAKE_GENERATOR})
-endif()
+set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
 
 cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
 
