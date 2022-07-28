@@ -1,6 +1,7 @@
 # CMake Python build
 
-Build Python and its prerequisite libraries from CMake ExternalProject.
+Build recent version of Python and its prerequisite libraries from CMake ExternalProject.
+Tested with Python 3.10 and 3.11.
 
 The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: expat, ffi, readline, ssl,  zlib.
 Because of broken system libraries and the fast build time, we always build LZMA and BZip2.
