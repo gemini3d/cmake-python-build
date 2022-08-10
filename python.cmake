@@ -47,7 +47,7 @@ else()
   set(python_ldflags "${LDFLAGS}")
 
   if(OPENSSL_FOUND)
-    cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
+    get_filename_component(openssl_dir ${OPENSSL_INCLUDE_DIR} DIRECTORY)
     list(APPEND python_args --with-openssl=${openssl_dir})
   else()
     list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})

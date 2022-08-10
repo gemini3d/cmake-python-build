@@ -1,5 +1,4 @@
-
-cmake_minimum_required(VERSION 3.20...3.24)
+cmake_minimum_required(VERSION 3.19...3.25)
 
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
@@ -65,7 +64,7 @@ if(APPLE)
   PATHS /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
   )
   if(macsys)
-    cmake_path(GET macsys PARENT_PATH lmac)
+    get_filename_component(lmac ${macsys} DIRECTORY)
     string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${lmac}")
     string(APPEND LDFLAGS " -Wl,-rpath,${lmac}")
   endif()
