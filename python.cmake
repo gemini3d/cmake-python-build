@@ -7,7 +7,7 @@ endif()
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
 
-  if(NOT (CMAKE_C_COMPILER_ID STREQUAL MSVC AND CMAKE_CXX_COMPILER_ID STREQUAL MSVC))
+  if(NOT (CMAKE_C_COMPILER_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "MSVC"))
     message(FATAL_ERROR "On Windows, Python is available from Microsoft Store. Python building on Windows requires Visual Studio.")
   endif()
 
