@@ -3,6 +3,10 @@
 Build recent version of Python and its prerequisite libraries from CMake ExternalProject.
 Tested with Python 3.10 and 3.11.
 
+In contrast to 
+https://github.com/python-cmake-buildsystem/python-cmake-buildsystem
+that replaces Python's Autotools scripts completely eith CMake, this project is a thin use of CMake ExternalProject to build Python via its own Autotools scripts.
+
 The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: expat, ffi, readline, ssl,  zlib.
 Because of broken system libraries and the fast build time, we always build LZMA and BZip2.
 
