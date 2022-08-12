@@ -4,8 +4,8 @@
   "tag": "v3.10.6"
 },
 "bzip2": {
-  "url": "https://github.com/gemini3d/bzip2-cmake.git",
-  "tag": "v1.0.8.0"
+  "url": "https://gitlab.com/bzip2/bzip2",
+  "tag": "2d8393924b9f3e014000c7420c7da7c3ddb74e2c"
 },
 "expat": {
   "url": "https://github.com/libexpat/libexpat.git",

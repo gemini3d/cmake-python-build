@@ -6,7 +6,12 @@ string(JSON bzip2_url GET ${json_meta} bzip2 url)
 string(JSON bzip2_tag GET ${json_meta} bzip2 tag)
 
 set(bzip2_args
--DBUILD_UTILS:BOOL=false
+-DENABLE_APP:BOOL=false
+-DENABLE_DOCS:BOOL=false
+-DENABLE_EXAMPLES:BOOL=false
+-DENABLE_TESTS:BOOL=false
+-DENABLE_SHARED_LIB:BOOL=true
+-DENABLE_STATIC_LIB:BOOL=false
 )
 
 # build
