@@ -3,11 +3,12 @@
 Build recent version of Python and its prerequisite libraries from CMake ExternalProject.
 Tested with Python 3.10 and 3.11.
 
-In contrast to 
+In contrast to
 https://github.com/python-cmake-buildsystem/python-cmake-buildsystem
 that replaces Python's Autotools scripts completely eith CMake, this project is a thin use of CMake ExternalProject to build Python via its own Autotools scripts.
 
-The default option `cmake -Dfind=on` searches for these libraries and builds them if not present: expat, ffi, readline, ssl,  zlib.
+## Build
+
 Because of broken system libraries and the fast build time, we always build LZMA and BZip2.
 
 ```sh
@@ -18,6 +19,18 @@ cmake --build build
 
 That makes binaries including: ~/mydir/bin/[python3,pip3].
 If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
+
+### Options
+
+`-Dfind=on`
+: searches for these libraries and builds them if not present: expat, ffi, readline, ssl, zlib
+
+`-DCMAKE_BUILD_TYPE=Release`
+: build Python itself with optimization (default off). Building Python with optimization takes several times longer--about 2 minutes on a Mac Mini M1.
+The other libraries are always set to optimize.
+
+`-Dpython_tag=v3.10.6`
+: select Python Git tag to build.
 
 ## Why?
 

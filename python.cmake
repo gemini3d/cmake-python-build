@@ -42,6 +42,9 @@ else()
   CXX=${CXX}
   --with-system-expat
   )
+  if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    list(APPEND python_args --enable-optimizations)
+  endif()
 
   set(python_cflags "${CMAKE_C_FLAGS}")
   set(python_ldflags "${LDFLAGS}")
