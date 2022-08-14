@@ -37,9 +37,3 @@ if(DEFINED ENV{CONDA_PREFIX})
   )
   list(APPEND CMAKE_IGNORE_PATH ${ignore_path})
 endif()
-
-
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  message(FATAL_ERROR "Please define an install location like
-  cmake -B build -DCMAKE_INSTALL_PREFIX=~/mylibs")
-endif()
