@@ -16,7 +16,7 @@
   "tag": "v3.4.2"
 },
 "libtool": {
-  "url": "https://github.com/autotools-mirror/libtool.git",
+  "url": "https://git.savannah.gnu.org/git/libtool.git",
   "tag": "v2.4.7"
 },
 "readline": {
