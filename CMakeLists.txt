@@ -19,7 +19,7 @@ endif()
 find_program(CMAKE_C_COMPILER NAMES ${CC} REQUIRED)
 find_program(CMAKE_CXX_COMPILER NAMES ${CXX} REQUIRED)
 
-project(BuildPython
+project(CPython
 LANGUAGES C CXX
 )
 
