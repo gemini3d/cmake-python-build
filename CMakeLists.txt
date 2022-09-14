@@ -80,3 +80,5 @@ if(DEFINED ENV{CONDA_PREFIX})
   to avoid conflicts with the Python build system."
   )
 endif()
+
+message(STATUS "CMake ${CMAKE_VERSION} Python ${python_tag}")
