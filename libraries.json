@@ -9,7 +9,7 @@
 },
 "expat": {
   "url": "https://github.com/libexpat/libexpat.git",
-  "tag": "R_2_4_8"
+  "tag": "R_2_4_9"
 },
 "ffi": {
   "url": "https://github.com/libffi/libffi.git",
