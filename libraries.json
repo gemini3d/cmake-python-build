@@ -13,7 +13,7 @@
 },
 "ffi": {
   "url": "https://github.com/libffi/libffi.git",
-  "tag": "v3.4.2"
+  "tag": "v3.4.3"
 },
 "libtool": {
   "url": "https://git.savannah.gnu.org/git/libtool.git",
@@ -29,7 +29,7 @@
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
-  "tag": "v5.2.5"
+  "tag": "v5.2.6"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
