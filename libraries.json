@@ -1,7 +1,7 @@
 {
 "python": {
   "url": "https://github.com/python/cpython.git",
-  "tag": "v3.10.8"
+  "tag": "v3.11.0"
 },
 "bzip2": {
   "url": "https://gitlab.com/bzip2/bzip2.git",
@@ -13,7 +13,7 @@
 },
 "ffi": {
   "url": "https://github.com/libffi/libffi.git",
-  "tag": "v3.4.3"
+  "tag": "v3.4.4"
 },
 "libtool": {
   "url": "https://git.savannah.gnu.org/git/libtool.git",
