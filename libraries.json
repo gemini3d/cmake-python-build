@@ -25,7 +25,7 @@
 },
 "ssl": {
   "url": "https://github.com/openssl/openssl.git",
-  "tag": "OpenSSL_1_1_1r"
+  "tag": "OpenSSL_1_1_1s"
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
