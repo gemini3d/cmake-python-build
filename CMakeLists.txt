@@ -13,7 +13,10 @@ else()
   message(FATAL_ERROR "Unsupported platform ${CMAKE_SYSTEM_NAME}")
 endif()
 
-find_program(CMAKE_C_COMPILER NAMES ${CC} REQUIRED)
+find_program(CMAKE_C_COMPILER NAMES ${CC})
+if(NOT CMAKE_C_COMPILER)
+  message(WARNING "Could not hint C compiler")
+endif()
 
 project(CPython
 LANGUAGES C
@@ -31,6 +34,11 @@ include(cmake/ExtProjAutotools.cmake)
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
 find_package(Autotools)
+
+if(AUTOCONF_VERSION VERSION_LESS 2.71)
+  set(ffi_tag "3.4.2")
+  message(STATUS "Set FFI ${ffi_tag} since Autoconf ${AUTOCONF_VERSION} < 2.71")
+endif()
 
 # -- includes needed for Python Autotools, especially Python >= 3.11 due to https://github.com/python/cpython/pull/29483/files
 string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")
@@ -81,4 +89,30 @@ if(DEFINED ENV{CONDA_PREFIX})
   )
 endif()
 
-message(STATUS "CMake ${CMAKE_VERSION} Python ${python_tag}")
+message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_tag}")
+
+# --- test built binary
+
+enable_testing()
+
+set(py_exe ${CMAKE_INSTALL_PREFIX}/bin/python3)
+
+add_test(NAME expat
+COMMAND ${py_exe} -c "import xml.parsers.expat; p = xml.parsers.expat.ParserCreate(); p.Parse('<?xml version=\"1.0\"?>')"
+)
+
+add_test(NAME lzma
+COMMAND ${py_exe} -c "import lzma; t = b'Hi'; assert t == lzma.decompress(lzma.compress(t))"
+)
+
+add_test(NAME bzip2
+COMMAND ${py_exe} -c "import bz2; t = b'Hi'; assert t == bz2.decompress(bz2.compress(t))"
+)
+
+add_test(NAME zlib
+COMMAND ${py_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.compress(t))"
+)
+
+add_test(NAME ssl
+COMMAND ${py_exe} -c "import ssl; assert ssl.OPENSSL_VERSION"
+)

@@ -2,6 +2,14 @@
 
 include(FetchContent)
 
+if(find)
+  find_package(BZip2)
+  if(BZIP2_FOUND)
+    add_custom_target(bzip2)
+    return()
+  endif()
+endif()
+
 string(JSON bzip2_url GET ${json_meta} bzip2 url)
 string(JSON bzip2_tag GET ${json_meta} bzip2 tag)
 

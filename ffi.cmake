@@ -3,11 +3,11 @@ include(ExternalProject)
 
 if(find)
   find_library(libffi NAMES ffi)
-endif()
 
-if(libffi)
-  add_custom_target(ffi)
-  return()
+  if(libffi)
+    add_custom_target(ffi)
+    return()
+  endif()
 endif()
 
 if(NOT LIBTOOL_EXECUTABLE)

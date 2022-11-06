@@ -15,6 +15,9 @@ Because of broken system libraries and the fast build time, we always build LZMA
 cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
 
 cmake --build build
+
+# optional
+ctest --test-dir build -V
 ```
 
 That makes binaries including: ~/mydir/bin/[python3,pip3].
@@ -23,13 +26,13 @@ If the system has graphical capabilities, this built Python will work with Matpl
 ### Options
 
 `-Dfind=on`
-: searches for these libraries and builds them if not present: expat, ffi, readline, ssl, zlib
+: (default on) searches for these libraries and builds them if not present: expat, ffi, readline, ssl, zlib
 
 `-DCMAKE_BUILD_TYPE=Release`
 : build Python itself with optimization (default off). Building Python with optimization takes several times longer--about 2 minutes on a Mac Mini M1.
 The other libraries are always set to optimize.
 
-`-Dpython_tag=v3.10.6`
+`-Dpython_tag=v3.11.0`
 : select Python Git tag to build.
 
 ## Why?

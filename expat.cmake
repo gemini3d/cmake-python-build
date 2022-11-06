@@ -4,11 +4,10 @@ include(ExternalProject)
 
 if(find)
   find_package(EXPAT)
-endif()
-
-if(EXPAT_FOUND)
-  add_custom_target(expat)
-  return()
+  if(EXPAT_FOUND)
+    add_custom_target(expat)
+    return()
+  endif()
 endif()
 
 string(JSON expat_url GET ${json_meta} expat url)

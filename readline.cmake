@@ -3,11 +3,10 @@ include(ExternalProject)
 
 if(find)
   find_library(libreadline NAMES readline)
-endif()
-
-if(libreadline)
-  add_custom_target(readline)
-  return()
+  if(libreadline)
+    add_custom_target(readline)
+    return()
+  endif()
 endif()
 
 string(JSON readline_url GET ${json_meta} readline url)

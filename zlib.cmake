@@ -2,11 +2,11 @@ include(ExternalProject)
 
 if(find)
   find_package(ZLIB)
-endif()
 
-if(ZLIB_FOUND)
-  add_custom_target(zlib)
-  return()
+  if(ZLIB_FOUND)
+    add_custom_target(zlib)
+    return()
+  endif()
 endif()
 
 set(zlib_cmake_args
