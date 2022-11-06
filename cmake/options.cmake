@@ -7,20 +7,10 @@ set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 
-# -- config checks
+cmake_host_system_information(RESULT Ncpu QUERY NUMBER_OF_PHYSICAL_CORES)
 
-if(NOT MSVC)
-get_property(is_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
-if(is_multi_config)
-  if(WIN32)
-    set(suggest "MinGW Makefiles")
-  else()
-    set(suggest "Unix Makefiles")
-  endif()
-  message(FATAL_ERROR "Please use a single configuration generator like:
-  cmake -G \"${suggest}\"
-  ")
-endif()
+if(CMAKE_GENERATOR MATCHES "Ninja")
+  message(WARNING "If difficulty building with Ninja, try GNU Make")
 endif()
 
 # --- auto-ignore build directory
