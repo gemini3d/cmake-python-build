@@ -35,11 +35,6 @@ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
 find_package(Autotools)
 
-if(AUTOCONF_VERSION VERSION_LESS 2.71)
-  set(ffi_tag "3.4.2")
-  message(STATUS "Set FFI ${ffi_tag} since Autoconf ${AUTOCONF_VERSION} < 2.71")
-endif()
-
 # -- includes needed for Python Autotools, especially Python >= 3.11 due to https://github.com/python/cpython/pull/29483/files
 string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")
 

@@ -17,6 +17,11 @@ endif()
 string(JSON ffi_url GET ${json_meta} ffi url)
 string(JSON ffi_tag GET ${json_meta} ffi tag)
 
+if(AUTOCONF_VERSION VERSION_LESS 2.71)
+  set(ffi_tag "v3.4.2")
+  message(STATUS "Set FFI ${ffi_tag} since Autoconf ${AUTOCONF_VERSION} < 2.71")
+endif()
+
 set(ffi_args
 --disable-docs
 )
