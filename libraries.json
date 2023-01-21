@@ -29,7 +29,7 @@
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
-  "tag": "v5.4.0"
+  "tag": "v5.4.1"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
