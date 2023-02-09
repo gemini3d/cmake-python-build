@@ -5,6 +5,7 @@ if(find)
   find_library(libffi NAMES ffi)
 
   if(libffi)
+    message(STATUS "Found FFI: ${libffi}")
     add_custom_target(ffi)
     return()
   endif()

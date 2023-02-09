@@ -19,7 +19,6 @@ execute_process(COMMAND ${CMAKE_COMMAND}
 ${conf_args}
 RESULT_VARIABLE ret
 )
-# Make shows live ExternalProject progress while Ninja is quiet
 if(NOT ret EQUAL 0)
   message(FATAL_ERROR "Failed to configure")
 endif()
