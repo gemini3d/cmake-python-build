@@ -17,11 +17,6 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX "${PROJECT_BINARY_DIR}/local" CACHE PATH "default install prefix" FORCE)
 endif()
 
-# --- auto-ignore build directory
-if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
-  file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
-endif()
-
 # exclude Conda from search
 if(DEFINED ENV{CONDA_PREFIX})
   set(ignore_path
@@ -31,3 +26,5 @@ if(DEFINED ENV{CONDA_PREFIX})
   )
   list(APPEND CMAKE_IGNORE_PATH ${ignore_path})
 endif()
+
+file(GENERATE OUTPUT .gitignore CONTENT "*")
