@@ -41,7 +41,7 @@ string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")
 # -- libraries needed for Python Autotools
 
 set(LDFLAGS $ENV{LDFLAGS})
-foreach(l lib lib64)
+foreach(l IN ITEMS lib lib64)
   string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${CMAKE_INSTALL_PREFIX}/${l}")
   string(APPEND LDFLAGS " -Wl,-rpath,${CMAKE_INSTALL_PREFIX}/${l}")
 endforeach()

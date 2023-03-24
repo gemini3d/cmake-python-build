@@ -31,7 +31,7 @@ else()
   endif()
 
   # prereqs
-  foreach(l bzip2 expat ffi lzma readline ssl zlib)
+  foreach(l IN ITEMS bzip2 expat ffi lzma readline ssl zlib)
     include(${l}.cmake)
   endforeach()
 
