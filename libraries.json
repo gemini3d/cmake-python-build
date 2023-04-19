@@ -1,7 +1,7 @@
 {
 "python": {
   "url": "https://github.com/python/cpython.git",
-  "tag": "v3.11.2"
+  "tag": "v3.11.3"
 },
 "bzip2": {
   "url": "https://gitlab.com/bzip2/bzip2.git",
