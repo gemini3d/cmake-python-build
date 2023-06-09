@@ -10,7 +10,9 @@ if(NOT prefix)
 endif()
 get_filename_component(prefix ${prefix} ABSOLUTE)
 
-set(conf_args -DCMAKE_INSTALL_PREFIX:PATH=${prefix})
+option(find "find libraries" off)
+
+set(conf_args -DCMAKE_INSTALL_PREFIX:PATH=${prefix} -Dfind:BOOL=${find})
 
 execute_process(COMMAND ${CMAKE_COMMAND}
 -G "Unix Makefiles"

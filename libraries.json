@@ -1,11 +1,11 @@
 {
 "python": {
   "url": "https://github.com/python/cpython.git",
-  "tag": "v3.11.3"
+  "tag": "v3.11.4"
 },
 "bzip2": {
   "url": "https://gitlab.com/bzip2/bzip2.git",
-  "tag": "2d8393924b9f3e014000c7420c7da7c3ddb74e2c"
+  "tag": "66c46b8c9436613fd81bc5d03f63a61933a4dcc3"
 },
 "expat": {
   "url": "https://github.com/libexpat/libexpat.git",
@@ -29,10 +29,10 @@
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
-  "tag": "v5.4.1"
+  "tag": "v5.4.3"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
-  "tag": "2.0.7"
+  "tag": "2.1.2"
 }
 }

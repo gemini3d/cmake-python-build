@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19...3.26)
+cmake_minimum_required(VERSION 3.19...3.27)
 
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
