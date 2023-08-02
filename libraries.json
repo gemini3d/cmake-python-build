@@ -25,7 +25,7 @@
 },
 "ssl": {
   "url": "https://github.com/openssl/openssl.git",
-  "tag": "OpenSSL_1_1_1u"
+  "tag": "OpenSSL_1_1_1v"
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
@@ -33,6 +33,6 @@
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
-  "tag": "2.1.2"
+  "tag": "2.1.3"
 }
 }
