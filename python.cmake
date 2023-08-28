@@ -1,8 +1,16 @@
 string(JSON python_url GET ${json_meta} python url)
 
-if(NOT python_tag)
-  string(JSON python_tag GET ${json_meta} python tag)
+
+
+if(python_url MATCHES ".git$")
+  if(NOT python_tag)
+    string(JSON python_tag GET ${json_meta} python tag)
+  endif()
+  set(download_params GIT_REPOSITORY ${python_url} GIT_TAG "${python_tag}" GIT_SHALLOW true)
+else()
+  set(download_params URL ${python_url})
 endif()
+
 
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
@@ -12,9 +20,7 @@ if(WIN32)
   endif()
 
   ExternalProject_Add(python
-  GIT_REPOSITORY ${python_url}
-  GIT_TAG ${python_tag}
-  GIT_SHALLOW true
+  ${download_params}
   CONFIGURE_COMMAND ""
   BUILD_COMMAND <SOURCE_DIR>/PCBuild/build.bat
   INSTALL_COMMAND ""
@@ -56,9 +62,7 @@ else()
   endif()
 
   ExternalProject_Add(python
-  GIT_REPOSITORY ${python_url}
-  GIT_TAG ${python_tag}
-  GIT_SHALLOW true
+  ${download_params}
   CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
@@ -66,6 +70,13 @@ else()
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 60
   DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
+  USES_TERMINAL_DOWNLOAD true
+  USES_TERMINAL_UPDATE true
+  USES_TERMINAL_PATCH true
+  USES_TERMINAL_CONFIGURE true
+  USES_TERMINAL_BUILD true
+  USES_TERMINAL_INSTALL true
+  USES_TERMINAL_TEST true
   )
 
 endif()
