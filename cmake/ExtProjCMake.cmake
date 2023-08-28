@@ -9,15 +9,27 @@ list(PREPEND args
 -DBUILD_TESTING:BOOL=false
 )
 
+if(url MATCHES ".git$")
+  set(download_params GIT_REPOSITORY ${url} GIT_TAG ${tag} GIT_SHALLOW true)
+else()
+  set(download_params URL ${url})
+endif()
+
 ExternalProject_Add(${name}
-GIT_REPOSITORY ${url}
-GIT_TAG ${tag}
-GIT_SHALLOW true
+${download_params}
 CMAKE_ARGS ${args}
+TLS_VERIFY true
 INACTIVITY_TIMEOUT 60
 CONFIGURE_HANDLED_BY_BUILD true
 TEST_COMMAND ""
 SOURCE_SUBDIR ${subdir}
+USES_TERMINAL_DOWNLOAD true
+USES_TERMINAL_UPDATE true
+USES_TERMINAL_PATCH true
+USES_TERMINAL_CONFIGURE true
+USES_TERMINAL_BUILD true
+USES_TERMINAL_INSTALL true
+USES_TERMINAL_TEST true
 )
 
 endfunction()
