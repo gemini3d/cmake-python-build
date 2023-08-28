@@ -24,7 +24,7 @@ LANGUAGES C
 
 include(ExternalProject)
 
-include(cmake/options.cmake)
+include(options.cmake)
 
 include(cmake/ExtProjCMake.cmake)
 include(cmake/ExtProjAutotools.cmake)
