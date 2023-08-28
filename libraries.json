@@ -1,7 +1,7 @@
 {
 "python": {
   "url": "https://github.com/python/cpython.git",
-  "tag": "v3.11.4"
+  "tag": "v3.11.5"
 },
 "bzip2": {
   "url": "https://gitlab.com/bzip2/bzip2.git",
@@ -29,7 +29,7 @@
 },
 "xz": {
   "url": "https://github.com/xz-mirror/xz.git",
-  "tag": "v5.4.3"
+  "tag": "v5.4.4"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
