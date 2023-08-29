@@ -16,8 +16,7 @@
   "tag": "v2.4.7"
 },
 "readline": {
-  "url": "https://git.savannah.gnu.org/git/readline.git",
-  "tag": "readline-8.1"
+  "url": "https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz"
 },
 "ssl": {
   "url": "https://github.com/openssl/openssl.git",
