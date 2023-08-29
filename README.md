@@ -53,3 +53,10 @@ Tested on Linux and MacOS with compilers including:
 
 The CMakeLists.txt automatically forces "clang" on MacOS and "gcc" on Linux.
 This seemed to be the most robust choice, as Autotools failed to configure with choices like "gcc-*version*", Intel "icc" failed, and Intel "icx" took 100x longer than GCC to build.
+
+## Prereqs
+
+Some low level prereqs aren't built by this project:
+
+* libtool: `dnf install libtool` or `brew install libtool`
+* libssl: requires Perl, `dnf install perl` or `brew install perl` for FindBin.pm
