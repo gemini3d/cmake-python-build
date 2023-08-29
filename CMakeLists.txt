@@ -88,26 +88,29 @@ message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version} from ${
 
 enable_testing()
 
-set(py_exe ${CMAKE_INSTALL_PREFIX}/bin/python3)
+set(python_exe ${CMAKE_INSTALL_PREFIX}/bin/python3)
+
+add_test(NAME PythonVersion COMMAND ${python_exe} --version)
+set_property(TEST PythonVersion PROPERTY PASS_REGULAR_EXPRESSION "Python ${python_version}")
 
 add_test(NAME expat
-COMMAND ${py_exe} -c "import xml.parsers.expat; p = xml.parsers.expat.ParserCreate(); p.Parse('<?xml version=\"1.0\"?>')"
+COMMAND ${python_exe} -c "import xml.parsers.expat; p = xml.parsers.expat.ParserCreate(); p.Parse('<?xml version=\"1.0\"?>')"
 )
 
 add_test(NAME lzma
-COMMAND ${py_exe} -c "import lzma; t = b'Hi'; assert t == lzma.decompress(lzma.compress(t))"
+COMMAND ${python_exe} -c "import lzma; t = b'Hi'; assert t == lzma.decompress(lzma.compress(t))"
 )
 
 add_test(NAME bzip2
-COMMAND ${py_exe} -c "import bz2; t = b'Hi'; assert t == bz2.decompress(bz2.compress(t))"
+COMMAND ${python_exe} -c "import bz2; t = b'Hi'; assert t == bz2.decompress(bz2.compress(t))"
 )
 
 add_test(NAME zlib
-COMMAND ${py_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.compress(t))"
+COMMAND ${python_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.compress(t))"
 )
 
 add_test(NAME ssl
-COMMAND ${py_exe} -c "import ssl; assert ssl.OPENSSL_VERSION"
+COMMAND ${python_exe} -c "import ssl; assert ssl.OPENSSL_VERSION"
 )
 
 file(GENERATE OUTPUT .gitignore CONTENT "*")
