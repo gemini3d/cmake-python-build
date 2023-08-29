@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.19...3.27)
 
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+  message(FATAL_ERROR "Use out of source build
+  cmake -Bbuild")
+endif()
+
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
 # Intel compiler icx/icpx works but is more than 100x slower to build.
@@ -16,6 +21,7 @@ endif()
 find_program(CMAKE_C_COMPILER NAMES ${CC})
 if(NOT CMAKE_C_COMPILER)
   message(WARNING "Could not hint C compiler")
+  unset(CMAKE_C_COMPILER CACHE)
 endif()
 
 project(CPython
@@ -103,3 +109,5 @@ COMMAND ${py_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.c
 add_test(NAME ssl
 COMMAND ${py_exe} -c "import ssl; assert ssl.OPENSSL_VERSION"
 )
+
+file(GENERATE OUTPUT .gitignore CONTENT "*")
