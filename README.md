@@ -32,8 +32,12 @@ If the system has graphical capabilities, this built Python will work with Matpl
 : build Python itself with optimization (default off). Building Python with optimization takes several times longer--about 2 minutes on a Mac Mini M1.
 The other libraries are always set to optimize.
 
-`-Dpython_tag=v3.11.0`
+Select Python version *or* URL like:
+
+`-Dpython_version="3.11.5"`
 : select Python Git tag to build.
+
+`-Dpython_url="https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz"`
 
 ## Why?
 

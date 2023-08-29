@@ -82,7 +82,7 @@ string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 include(python.cmake)
 
 
-message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_tag}")
+message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version} from ${python_url}")
 
 # --- test built binary
 

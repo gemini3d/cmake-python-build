@@ -1,6 +1,10 @@
-string(JSON python_url GET ${json_meta} python url)
+if(NOT python_url)
+  # omit "rc*" from the url dir
+  string(REGEX REPLACE "rc[0-9]+$" "" python_url_dir "${python_version}")
+  set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
+endif()
 
-
+message(STATUS "Python: ${python_url}")
 
 if(python_url MATCHES ".git$")
   if(NOT python_tag)

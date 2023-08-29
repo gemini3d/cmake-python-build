@@ -1,6 +1,10 @@
 option(find "search for packages" on)
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
+if(NOT python_version)
+  set(python_version "3.11.5")
+endif()
+
 set(CMAKE_TLS_VERIFY ON)
 
 set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
