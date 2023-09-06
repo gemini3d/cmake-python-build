@@ -48,6 +48,11 @@ Python uses Autotools on most platforms except Windows where Visual Studio is us
 The libraries need to be built with specific options and the forums are full of suggestions for tweaking Python build scripts etc.
 This CMake project elides those issues for Linux/MacOS platforms at least.
 
+## standalone embedded Windows script
+
+A separate CMake script for Windows-only that downloads and extracts a standalone embedded Python is at
+[scripts/install-python.cmake](./scripts/install-python.cmake).
+
 ## Compilers
 
 Tested on Linux and MacOS with compilers including:
