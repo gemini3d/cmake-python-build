@@ -1,6 +1,6 @@
 # Download Windows executable
 
-cmake_minimum_required(VERSION 3.11...3.27)
+cmake_minimum_required(VERSION 3.19...3.27)
 
 include(FetchContent)
 
@@ -51,16 +51,38 @@ INACTIVITY_TIMEOUT 60
 file(MAKE_DIRECTORY ${prefix})
 file(COPY ${cmake_SOURCE_DIR}/ DESTINATION ${prefix})
 
+# --- so Python can find libs
+string(REGEX MATCH "(^[0-9]+)\\.([0-9]+)" python_version_short ${python_version})
+set(python_version_short ${CMAKE_MATCH_1}${CMAKE_MATCH_2})
+
+find_file(pth
+NAMES python${python_version_short}._pth
+HINTS ${prefix}
+NO_DEFAULT_PATH
+REQUIRED)
+
+file(RENAME ${pth} ${prefix}/python${python_version_short}.pth)
+
+set(pth ${prefix}/python${python_version_short}.pth)
+
 # --- verify
 find_program(python_exe
 NAMES python3 python
 HINTS ${prefix}
 NO_DEFAULT_PATH
-NO_CACHE
 )
 if(NOT python_exe)
   message(FATAL_ERROR "failed to install Python ${python_version} to ${prefix}")
 endif()
+
+# --- add paths to Python
+file(APPEND "${pth}" "${prefix}/Lib\n")
+
+# --- pip
+file(DOWNLOAD https://bootstrap.pypa.io/get-pip.py ${prefix}/get-pip.py)
+
+execute_process(COMMAND ${python_exe} ${prefix}/get-pip.py)
+
 
 get_filename_component(bindir ${python_exe} DIRECTORY)
 message(STATUS "installed Python ${python_version} to ${bindir}")
