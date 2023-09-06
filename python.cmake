@@ -1,21 +1,3 @@
-if(NOT python_url)
-  # omit "rc*" from the url dir
-  string(REGEX REPLACE "rc[0-9]+$" "" python_url_dir "${python_version}")
-  set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
-endif()
-
-message(STATUS "Python: ${python_url}")
-
-if(python_url MATCHES ".git$")
-  if(NOT python_tag)
-    string(JSON python_tag GET ${json_meta} python tag)
-  endif()
-  set(download_params GIT_REPOSITORY ${python_url} GIT_TAG "${python_tag}" GIT_SHALLOW true)
-else()
-  set(download_params URL ${python_url})
-endif()
-
-
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
 
@@ -24,7 +6,7 @@ if(WIN32)
   endif()
 
   ExternalProject_Add(python
-  ${download_params}
+  ${python_download}
   CONFIGURE_COMMAND ""
   BUILD_COMMAND <SOURCE_DIR>/PCBuild/build.bat
   INSTALL_COMMAND ""
@@ -66,7 +48,7 @@ else()
   endif()
 
   ExternalProject_Add(python
-  ${download_params}
+  ${python_download}
   CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
   BUILD_COMMAND ${MAKE_EXECUTABLE} -j
   INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
