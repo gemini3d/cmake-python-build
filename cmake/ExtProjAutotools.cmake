@@ -7,10 +7,14 @@ CFLAGS=${CMAKE_C_FLAGS}
 LDFLAGS=${LDFLAGS}
 )
 
+if(url MATCHES ".git$")
+  set(download_params GIT_REPOSITORY ${url} GIT_TAG ${tag} GIT_SHALLOW true)
+else()
+  set(download_params URL ${url})
+endif()
+
 ExternalProject_Add(${name}
-GIT_REPOSITORY ${url}
-GIT_TAG ${tag}
-GIT_SHALLOW true
+${download_params}
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${config_args}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j${Ncpu}
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j${Ncpu} install
