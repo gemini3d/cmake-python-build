@@ -12,7 +12,13 @@ get_filename_component(prefix ${prefix} ABSOLUTE)
 
 option(find "find libraries" off)
 
-set(conf_args -DCMAKE_INSTALL_PREFIX:PATH=${prefix} -Dfind:BOOL=${find})
+set(conf_args
+-DCMAKE_INSTALL_PREFIX:PATH=${prefix}
+-Dfind:BOOL=${find}
+)
+if(python_version)
+  list(APPEND conf_args -Dpython_version=${python_version})
+endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND}
 -G "Unix Makefiles"
