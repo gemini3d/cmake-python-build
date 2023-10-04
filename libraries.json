@@ -23,7 +23,7 @@
   "tag": "OpenSSL_1_1_1w"
 },
 "xz": {
-  "url": "https://github.com/xz-mirror/xz.git",
+  "url": "https://github.com/tukaani-project/xz.git",
   "tag": "v5.4.4"
 },
 "zlib": {
