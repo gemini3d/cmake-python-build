@@ -1,5 +1,4 @@
 # installs CMAKE_INSTALL_PREFIX/bin/libtool[ize]
-include(ExternalProject)
 
 if(LIBTOOL_EXECUTABLE)
   add_custom_target(libtool)

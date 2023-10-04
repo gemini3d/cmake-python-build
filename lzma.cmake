@@ -1,8 +1,6 @@
 # xz for python lzma module
 # LZMA is important to some popular Python scientific packages, so we want to be sure it will work.
 
-include(ExternalProject)
-
 if(find)
   find_package(LibLZMA)
   if(LIBLZMA_FOUND)

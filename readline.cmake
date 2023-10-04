@@ -1,5 +1,4 @@
 # readline
-include(ExternalProject)
 
 if(find)
   find_library(libreadline NAMES readline)

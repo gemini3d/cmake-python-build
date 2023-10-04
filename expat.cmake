@@ -1,7 +1,5 @@
 # installs Expat
 
-include(ExternalProject)
-
 if(find)
   find_package(EXPAT)
   if(EXPAT_FOUND)
