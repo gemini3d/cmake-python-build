@@ -39,7 +39,9 @@ include(cmake/ExtProjAutotools.cmake)
 
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
-find_package(Autotools)
+if(NOT WIN32)
+  find_package(Autotools)
+endif()
 
 # -- includes needed for Python Autotools, especially Python >= 3.11 due to https://github.com/python/cpython/pull/29483/files
 string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")
@@ -107,7 +109,11 @@ message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version} from ${
 
 enable_testing()
 
-set(python_exe ${CMAKE_INSTALL_PREFIX}/bin/python3)
+if(WIN32)
+  set(python_exe ${CMAKE_INSTALL_PREFIX}/python.exe)
+else()
+  set(python_exe ${CMAKE_INSTALL_PREFIX}/bin/python3)
+endif()
 
 add_test(NAME PythonVersion COMMAND ${python_exe} --version)
 set_property(TEST PythonVersion PROPERTY PASS_REGULAR_EXPRESSION "Python ${python_version}")

@@ -10,12 +10,14 @@ if(WIN32)
   ${python_download}
   CONFIGURE_COMMAND ""
   BUILD_COMMAND <SOURCE_DIR>/PCBuild/build.bat
-  INSTALL_COMMAND ""
+  INSTALL_COMMAND <SOURCE_DIR>/python.bat <SOURCE_DIR>/PC/layout --preset-default --copy "${CMAKE_INSTALL_PREFIX}"
   TEST_COMMAND ""
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 60
   ${terminal_verbose}
   )
+  # https://discuss.python.org/t/windows-install-from-source-failing/25389/4
+  # --precompile causes problem with script hard-coded temporary directory
 
 else()
   # Linux prereqs: https://devguide.python.org/setup/#linux
