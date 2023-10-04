@@ -1,8 +1,9 @@
+
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
 
   if(NOT MSVC)
-    message(FATAL_ERROR "On Windows, Python is available from Microsoft Store. Python building on Windows requires Visual Studio.")
+    message(FATAL_ERROR "Python building on Windows requires Visual Studio.")
   endif()
 
   ExternalProject_Add(python
@@ -13,6 +14,7 @@ if(WIN32)
   TEST_COMMAND ""
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 60
+  ${terminal_verbose}
   )
 
 else()
@@ -56,13 +58,7 @@ else()
   CONFIGURE_HANDLED_BY_BUILD ON
   INACTIVITY_TIMEOUT 60
   DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
-  USES_TERMINAL_DOWNLOAD true
-  USES_TERMINAL_UPDATE true
-  USES_TERMINAL_PATCH true
-  USES_TERMINAL_CONFIGURE true
-  USES_TERMINAL_BUILD true
-  USES_TERMINAL_INSTALL true
-  USES_TERMINAL_TEST true
+  ${terminal_verbose}
   )
 
 endif()
