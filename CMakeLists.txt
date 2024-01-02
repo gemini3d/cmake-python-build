@@ -105,7 +105,8 @@ message(STATUS "Python: ${python_url}")
 include(python.cmake)
 
 
-message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version} from ${python_url}")
+message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version}")
+message(STATUS "${python_url} => ${CMAKE_INSTALL_PREFIX}")
 
 # --- test built binary
 
