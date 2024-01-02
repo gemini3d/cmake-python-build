@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.19)
 
 include(FetchContent)
 
-set(CMAKE_TLS_VERIFY true)
+option(CMAKE_TLS_VERIFY "verify TLS certificates" on)
 
 if(NOT WIN32)
   message(FATAL_ERROR "Embedded Python downloader is Windows-only")

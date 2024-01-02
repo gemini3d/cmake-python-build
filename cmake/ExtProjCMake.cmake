@@ -28,7 +28,6 @@ endif()
 ExternalProject_Add(${name}
 ${download_params}
 CMAKE_ARGS ${args}
-TLS_VERIFY true
 INACTIVITY_TIMEOUT 60
 CONFIGURE_HANDLED_BY_BUILD true
 TEST_COMMAND ""
