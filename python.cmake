@@ -22,10 +22,6 @@ if(WIN32)
 else()
   # Linux prereqs: https://devguide.python.org/setup/#linux
 
-  if(NOT Autotools_FOUND)
-    message(FATAL_ERROR "Python on Unix-like systems needs Autotools")
-  endif()
-
   # prereqs
   foreach(l IN ITEMS bzip2 expat ffi lzma readline ssl zlib)
     include(${l}.cmake)
