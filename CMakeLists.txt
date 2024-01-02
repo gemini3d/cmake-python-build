@@ -29,6 +29,7 @@ LANGUAGES C
 )
 
 include(ExternalProject)
+include(GNUInstallDirs)
 
 include(options.cmake)
 
@@ -48,11 +49,8 @@ string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")
 
 # -- libraries needed for Python Autotools
 
-set(LDFLAGS $ENV{LDFLAGS})
-foreach(l IN ITEMS lib lib64)
-  string(APPEND LDFLAGS " ${CMAKE_LIBRARY_PATH_FLAG}${CMAKE_INSTALL_PREFIX}/${l}")
-  string(APPEND LDFLAGS " -Wl,-rpath,${CMAKE_INSTALL_PREFIX}/${l}")
-endforeach()
+set(LDFLAGS
+"$ENV{LDFLAGS} ${CMAKE_LIBRARY_PATH_FLAG}${CMAKE_INSTALL_FULL_LIBDIR} -Wl,-rpath,${CMAKE_INSTALL_FULL_LIBDIR}")
 
 if(APPLE)
   find_path(macinc
