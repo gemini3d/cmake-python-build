@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19...3.27)
+cmake_minimum_required(VERSION 3.19...3.28)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   message(FATAL_ERROR "Use out of source build
@@ -82,6 +82,10 @@ string(APPEND CMAKE_SHARED_LINKER_FLAGS_INIT " ${LDFLAGS}")
 string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 
 # --- Python itself
+
+if(NOT python_version)
+  string(JSON python_version GET ${json_meta} "python" "version")
+endif()
 
 if(NOT python_url)
   # omit "rc*" from the url dir

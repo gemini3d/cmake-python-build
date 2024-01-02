@@ -1,6 +1,6 @@
 # Download Windows executable
 
-cmake_minimum_required(VERSION 3.19...3.27)
+cmake_minimum_required(VERSION 3.19)
 
 include(FetchContent)
 
@@ -11,7 +11,7 @@ if(NOT WIN32)
 endif()
 
 if(NOT python_version)
-  set(python_version 3.11.5)
+  set(python_version 3.12.1)
 endif()
 
 if(NOT prefix)

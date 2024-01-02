@@ -15,6 +15,9 @@
   "url": "https://git.savannah.gnu.org/git/libtool.git",
   "tag": "v2.4.7"
 },
+"python": {
+  "version": "3.12.1"
+},
 "readline": {
   "url": "https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz"
 },
