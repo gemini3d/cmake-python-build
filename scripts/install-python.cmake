@@ -11,7 +11,8 @@ if(NOT WIN32)
 endif()
 
 if(NOT python_version)
-  set(python_version 3.12.1)
+  file(READ ${CMAKE_CURRENT_LIST_DIR}/../cmake/libraries.json json_meta)
+  string(JSON python_version GET ${json_meta} "python" "version")
 endif()
 
 if(NOT prefix)
