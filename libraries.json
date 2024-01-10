@@ -27,10 +27,10 @@
 },
 "xz": {
   "url": "https://github.com/tukaani-project/xz.git",
-  "tag": "v5.4.4"
+  "tag": "v5.4.5"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
-  "tag": "2.1.3"
+  "tag": "2.1.5"
 }
 }
