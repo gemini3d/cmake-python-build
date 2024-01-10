@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.19)
 
 if(NOT bindir)
   set(bindir ${CMAKE_CURRENT_LIST_DIR}/build)
@@ -10,32 +10,29 @@ if(NOT prefix)
 endif()
 get_filename_component(prefix ${prefix} ABSOLUTE)
 
-option(find "find libraries" off)
-
-set(conf_args
--DCMAKE_INSTALL_PREFIX:PATH=${prefix}
--Dfind:BOOL=${find}
-)
+set(conf_args -DCMAKE_INSTALL_PREFIX:PATH=${prefix})
+if(DEFINED find)
+  list(APPEND conf_args -Dfind:BOOL=${find})
+endif()
 if(python_version)
   list(APPEND conf_args -Dpython_version=${python_version})
 endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND}
--G "Unix Makefiles"
 -S${CMAKE_CURRENT_LIST_DIR}
 -B${bindir}
 ${conf_args}
-RESULT_VARIABLE ret
+COMMAND_ERROR_IS_FATAL ANY
 )
-if(NOT ret EQUAL 0)
-  message(FATAL_ERROR "Failed to configure")
-endif()
 
 # --- build
 
 execute_process(COMMAND ${CMAKE_COMMAND} --build ${bindir}
-RESULT_VARIABLE ret
+COMMAND_ERROR_IS_FATAL ANY
 )
-if(NOT ret EQUAL 0)
-  message(FATAL_ERROR "Failed to build / install")
-endif()
+
+# --- test that Python libraries working
+
+execute_process(COMMAND ${CMAKE_CTEST_COMMAND} --test-dir ${bindir} -V
+COMMAND_ERROR_IS_FATAL ANY
+)

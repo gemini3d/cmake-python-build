@@ -9,11 +9,6 @@ if(find)
   endif()
 endif()
 
-if(CMAKE_GENERATOR MATCHES "Ninja")
-  message(WARNING "xz project may fail to build with Ninja. Try GNU Make if xz fails to build with Ninja:
-  cmake -Bbuild -G \"Unix Makefiles\"")
-endif()
-
 string(JSON xz_url GET ${json_meta} xz url)
 string(JSON xz_tag GET ${json_meta} xz tag)
 
