@@ -1,24 +1,23 @@
 # Download Windows executable
 
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 
 include(FetchContent)
 
 option(CMAKE_TLS_VERIFY "verify TLS certificates" on)
 
-if(NOT WIN32)
-  message(FATAL_ERROR "Embedded Python downloader is Windows-only")
-endif()
-
 if(NOT python_version)
-  file(READ ${CMAKE_CURRENT_LIST_DIR}/../cmake/libraries.json json_meta)
+  file(READ ${CMAKE_CURRENT_LIST_DIR}/../libraries.json json_meta)
   string(JSON python_version GET ${json_meta} "python" "version")
 endif()
 
 if(NOT prefix)
-  get_filename_component(prefix ~/python-${python_version} ABSOLUTE)
+  file(REAL_PATH "~/python-${python_version}" prefix EXPAND_TILDE)
 endif()
 
+if(NOT DEFINED ENV{PROCESSOR_ARCHITECTURE})
+  message(FATAL_ERROR "PROCESSOR_ARCHITECTURE not set, could not determine CPU arch")
+endif()
 set(arch $ENV{PROCESSOR_ARCHITECTURE})
 
 if(arch STREQUAL "ARM64")
@@ -42,12 +41,7 @@ message(STATUS "Python ${python_version}  ${prefix}")
 
 set(FETCHCONTENT_QUIET false)
 
-FetchContent_Populate(cmake
-URL ${python_url}
-TLS_VERIFY ${CMAKE_TLS_VERIFY}
-UPDATE_DISCONNECTED true
-INACTIVITY_TIMEOUT 60
-)
+FetchContent_Populate(cmake URL ${python_url} SOURCE_DIR ${prefix})
 
 file(MAKE_DIRECTORY ${prefix})
 file(COPY ${cmake_SOURCE_DIR}/ DESTINATION ${prefix})
@@ -60,7 +54,8 @@ find_file(pth
 NAMES python${python_version_short}._pth
 HINTS ${prefix}
 NO_DEFAULT_PATH
-REQUIRED)
+REQUIRE
+)
 
 file(RENAME ${pth} ${prefix}/python${python_version_short}.pth)
 
@@ -71,10 +66,8 @@ find_program(python_exe
 NAMES python3 python
 HINTS ${prefix}
 NO_DEFAULT_PATH
+REQUIRED
 )
-if(NOT python_exe)
-  message(FATAL_ERROR "failed to install Python ${python_version} to ${prefix}")
-endif()
 
 # --- add paths to Python
 file(APPEND "${pth}" "${prefix}/Lib\n")
@@ -84,6 +77,5 @@ file(DOWNLOAD https://bootstrap.pypa.io/get-pip.py ${prefix}/get-pip.py)
 
 execute_process(COMMAND ${python_exe} ${prefix}/get-pip.py)
 
-
-get_filename_component(bindir ${python_exe} DIRECTORY)
+cmake_path(GET python_exe PARENT_PATH bindir)
 message(STATUS "installed Python ${python_version} to ${bindir}")

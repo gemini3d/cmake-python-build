@@ -24,9 +24,7 @@ if(NOT CMAKE_C_COMPILER)
   unset(CMAKE_C_COMPILER CACHE)
 endif()
 
-project(CPython
-LANGUAGES C
-)
+project(CPython LANGUAGES C)
 
 include(ExternalProject)
 include(GNUInstallDirs)
