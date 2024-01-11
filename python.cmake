@@ -19,44 +19,48 @@ if(WIN32)
   # https://discuss.python.org/t/windows-install-from-source-failing/25389/4
   # --precompile causes problem with script hard-coded temporary directory
 
-else()
-  # Linux prereqs: https://devguide.python.org/setup/#linux
-
-  # prereqs
-  foreach(l IN ITEMS bzip2 expat ffi lzma readline ssl zlib)
-    include(${l}.cmake)
-  endforeach()
-
-  # Python build
-  set(python_args
-  --prefix=${CMAKE_INSTALL_PREFIX}
-  CC=${CC}
-  --with-system-expat
-  )
-  if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    list(APPEND python_args --enable-optimizations)
-  endif()
-
-  set(python_cflags "${CMAKE_C_FLAGS}")
-  set(python_ldflags "${LDFLAGS}")
-
-  if(OPENSSL_FOUND)
-    get_filename_component(openssl_dir ${OPENSSL_INCLUDE_DIR} DIRECTORY)
-    list(APPEND python_args --with-openssl=${openssl_dir})
-  else()
-    list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
-  endif()
-
-  ExternalProject_Add(python
-  ${python_download}
-  CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
-  BUILD_COMMAND ${MAKE_EXECUTABLE} -j
-  INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
-  TEST_COMMAND ""
-  CONFIGURE_HANDLED_BY_BUILD ON
-  INACTIVITY_TIMEOUT 60
-  DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
-  ${terminal_verbose}
-  )
-
+  return()
 endif()
+
+# Linux prereqs: https://devguide.python.org/setup/#linux
+
+# prereqs
+foreach(l IN ITEMS bzip2 expat ffi lzma readline ssl zlib)
+  include(${l}.cmake)
+endforeach()
+
+# Python build
+set(python_args
+--prefix=${CMAKE_INSTALL_PREFIX}
+CC=${CC}
+--with-system-expat
+)
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  list(APPEND python_args --enable-optimizations)
+endif()
+
+set(python_cflags "${CMAKE_C_FLAGS}")
+set(python_ldflags "${LDFLAGS}")
+
+if(OPENSSL_FOUND)
+  get_filename_component(openssl_dir ${OPENSSL_INCLUDE_DIR} DIRECTORY)
+  list(APPEND python_args --with-openssl=${openssl_dir})
+else()
+  list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
+endif()
+
+message(STATUS "Python configure args: ${python_args}")
+message(STATUS "Python CFLAGS: ${python_cflags}")
+message(STATUS "Python LDFLAGS: ${python_ldflags}")
+
+ExternalProject_Add(python
+${python_download}
+CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
+BUILD_COMMAND ${MAKE_EXECUTABLE} -j
+INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
+TEST_COMMAND ""
+CONFIGURE_HANDLED_BY_BUILD ON
+INACTIVITY_TIMEOUT 60
+DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
+${terminal_verbose}
+)

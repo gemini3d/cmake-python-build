@@ -5,6 +5,21 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   cmake -Bbuild")
 endif()
 
+if(NOT MSVC)
+get_property(is_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(is_multi_config)
+  message(WARNING "Please use single config generator to avoid problems")
+endif()
+endif()
+
+if(NOT CMAKE_BUILD_TYPE)
+  if(DEFINED ENV{CMAKE_BUILD_TYPE})
+    set(CMAKE_BUILD_TYPE $ENV{CMAKE_BUILD_TYPE} CACHE STRING "default")
+  else()
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Release default")
+  endif()
+endif()
+
 # -- must override compiler to be gcc on Linux and clang on Macos.
 # otherwise, Autotools is too shaky.
 # Intel compiler icx/icpx works but is more than 100x slower to build.
