@@ -13,7 +13,6 @@ if(WIN32)
   INSTALL_COMMAND <SOURCE_DIR>/python.bat <SOURCE_DIR>/PC/layout --preset-default --copy "${CMAKE_INSTALL_PREFIX}"
   TEST_COMMAND ""
   CONFIGURE_HANDLED_BY_BUILD ON
-  INACTIVITY_TIMEOUT 60
   ${terminal_verbose}
   )
   # https://discuss.python.org/t/windows-install-from-source-failing/25389/4
@@ -60,7 +59,6 @@ BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON
-INACTIVITY_TIMEOUT 60
 DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
 ${terminal_verbose}
 )
