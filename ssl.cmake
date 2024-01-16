@@ -32,7 +32,7 @@ string(JSON ssl_tag GET ${json_meta} ssl tag)
 set(ssl_config_args
 --openssldir=${CMAKE_INSTALL_PREFIX}
 --prefix=${CMAKE_INSTALL_PREFIX}
-CC=${CC}
+CC=${CMAKE_C_COMPILER}
 )
 if(BUILD_SHARED_LIBS)
   list(APPEND ssl_config_args shared)

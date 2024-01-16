@@ -2,7 +2,7 @@ function(extproj_autotools name url tag config_args)
 
 list(PREPEND config_args
 --prefix=${CMAKE_INSTALL_PREFIX}
-CC=${CC}
+CC=${CMAKE_C_COMPILER}
 CFLAGS=${CMAKE_C_FLAGS}
 LDFLAGS=${LDFLAGS}
 )

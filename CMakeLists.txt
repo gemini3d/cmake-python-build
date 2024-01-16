@@ -24,19 +24,13 @@ endif()
 # otherwise, Autotools is too shaky.
 # Intel compiler icx/icpx works but is more than 100x slower to build.
 if(APPLE)
-  set(CC clang)
+  set(CMAKE_C_COMPILER clang)
 elseif(UNIX)
-  set(CC gcc)
+  set(CMAKE_C_COMPILER gcc)
 elseif(WIN32)
-  set(CC cl)
+  set(CMAKE_C_COMPILER cl)
 else()
   message(FATAL_ERROR "Unsupported platform ${CMAKE_SYSTEM_NAME}")
-endif()
-
-find_program(CMAKE_C_COMPILER NAMES ${CC})
-if(NOT CMAKE_C_COMPILER)
-  message(WARNING "Could not hint C compiler")
-  unset(CMAKE_C_COMPILER CACHE)
 endif()
 
 project(CPython LANGUAGES C)

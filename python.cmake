@@ -50,7 +50,7 @@ endforeach()
 # Python build
 set(python_args
 --prefix=${CMAKE_INSTALL_PREFIX}
-CC=${CC}
+CC=${CMAKE_C_COMPILER}
 --with-system-expat
 )
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
