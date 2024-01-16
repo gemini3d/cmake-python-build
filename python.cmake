@@ -1,3 +1,22 @@
+if(NOT python_version)
+  string(JSON python_version GET ${json_meta} "python" "version")
+endif()
+
+if(NOT python_url)
+  # only major.minor.release url dir
+  string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
+  set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
+endif()
+
+if(python_url MATCHES ".git$")
+  if(NOT python_tag)
+    string(JSON python_tag GET ${json_meta} python tag)
+  endif()
+  set(python_download GIT_REPOSITORY ${python_url} GIT_TAG "${python_tag}" GIT_SHALLOW true)
+else()
+  set(python_download URL ${python_url})
+endif()
+
 
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html

@@ -94,27 +94,6 @@ string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 
 # --- Python itself
 
-if(NOT python_version)
-  string(JSON python_version GET ${json_meta} "python" "version")
-endif()
-
-if(NOT python_url)
-  # omit "rc*" from the url dir
-  string(REGEX REPLACE "rc[0-9]+$" "" python_url_dir "${python_version}")
-  set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
-endif()
-
-if(python_url MATCHES ".git$")
-  if(NOT python_tag)
-    string(JSON python_tag GET ${json_meta} python tag)
-  endif()
-  set(python_download GIT_REPOSITORY ${python_url} GIT_TAG "${python_tag}" GIT_SHALLOW true)
-else()
-  set(python_download URL ${python_url})
-endif()
-
-message(STATUS "Python: ${python_url}")
-
 include(python.cmake)
 
 
