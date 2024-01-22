@@ -4,7 +4,7 @@ Build recent version of Python and its prerequisite libraries from CMake Externa
 Tested with Python 3.10 ... 3.13 and newer.
 
 Instead of
-[replacing Python's Autotools scripts completely eith CMake](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem),
+[replacing Python's Autotools scripts completely with CMake](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem),
 this project is a thin use of CMake ExternalProject to build Python via its own Autotools scripts.
 
 ## Build
