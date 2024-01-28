@@ -8,7 +8,7 @@ USES_TERMINAL_INSTALL true
 USES_TERMINAL_TEST true
 )
 
-function(extproj_cmake name url tag cmake_args subdir)
+function(extproj_cmake name url cmake_args subdir)
 
 list(PREPEND args
 -DCMAKE_BUILD_TYPE=Release
@@ -19,14 +19,8 @@ list(PREPEND args
 -DBUILD_TESTING:BOOL=false
 )
 
-if(url MATCHES ".git$")
-  set(download_params GIT_REPOSITORY ${url} GIT_TAG ${tag} GIT_SHALLOW true)
-else()
-  set(download_params URL ${url})
-endif()
-
 ExternalProject_Add(${name}
-${download_params}
+URL ${url}
 CMAKE_ARGS ${args}
 CONFIGURE_HANDLED_BY_BUILD true
 TEST_COMMAND ""

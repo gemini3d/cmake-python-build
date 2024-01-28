@@ -1,23 +1,3 @@
-if(NOT python_version)
-  string(JSON python_version GET ${json_meta} "python" "version")
-endif()
-
-if(NOT python_url)
-  # only major.minor.release url dir
-  string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
-  set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
-endif()
-
-if(python_url MATCHES ".git$")
-  if(NOT python_tag)
-    string(JSON python_tag GET ${json_meta} python tag)
-  endif()
-  set(python_download GIT_REPOSITORY ${python_url} GIT_TAG "${python_tag}" GIT_SHALLOW true)
-else()
-  set(python_download URL ${python_url})
-endif()
-
-
 if(WIN32)
   # https://pythondev.readthedocs.io/windows.html
 
@@ -26,7 +6,7 @@ if(WIN32)
   endif()
 
   ExternalProject_Add(python
-  ${python_download}
+  URL ${python_url}
   CONFIGURE_COMMAND ""
   BUILD_COMMAND <SOURCE_DIR>/PCBuild/build.bat
   INSTALL_COMMAND <SOURCE_DIR>/python.bat <SOURCE_DIR>/PC/layout --preset-default --copy "${CMAKE_INSTALL_PREFIX}"
@@ -72,7 +52,7 @@ message(STATUS "Python CFLAGS: ${python_cflags}")
 message(STATUS "Python LDFLAGS: ${python_ldflags}")
 
 ExternalProject_Add(python
-${python_download}
+URL ${python_url}
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
 INSTALL_COMMAND ${MAKE_EXECUTABLE} install

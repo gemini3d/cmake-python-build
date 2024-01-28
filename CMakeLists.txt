@@ -43,13 +43,10 @@ include(options.cmake)
 include(cmake/ExtProjCMake.cmake)
 
 if(NOT WIN32)
-  find_package(Autotools REQUIRED)
   include(cmake/ExtProjAutotools.cmake)
 endif()
 
 # -- main program
-
-file(READ ${CMAKE_CURRENT_SOURCE_DIR}/libraries.json json_meta)
 
 # -- includes needed for Python Autotools, especially Python >= 3.11 due to https://github.com/python/cpython/pull/29483/files
 string(APPEND CMAKE_C_FLAGS " -I${CMAKE_INSTALL_PREFIX}/include")

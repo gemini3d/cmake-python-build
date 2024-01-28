@@ -5,9 +5,6 @@ if(LIBTOOL_EXECUTABLE)
   return()
 endif()
 
-string(JSON libtool_url GET ${json_meta} libtool url)
-string(JSON libtool_tag GET ${json_meta} libtool tag)
-
 set(libtool_args)
 
 

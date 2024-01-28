@@ -18,3 +18,46 @@ if(DEFINED ENV{CONDA_PREFIX})
   list(APPEND CMAKE_IGNORE_PREFIX_PATH $ENV{CONDA_PREFIX})
 endif()
 set(CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH false)
+
+if(WIN32)
+  return()
+endif()
+
+find_package(Autotools REQUIRED)
+
+set(python_version "3.12.1")
+
+set(expat_version "2_5_0")
+
+set(ffi_version "3.4.4")
+
+set(lzma_version "5.4.6")
+
+set(ssl_version "1_1_1w")
+
+set(zlib_version "2.1.6")
+
+if(AUTOCONF_VERSION VERSION_LESS 2.71)
+  set(ffi_version "3.4.2")
+  message(STATUS "Set FFI ${ffi_version} since Autoconf ${AUTOCONF_VERSION} < 2.71")
+endif()
+
+if(NOT python_url)
+# only major.minor.release url dir
+string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
+set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
+endif()
+
+set(bzip2_url "https://gitlab.com/bzip2/bzip2/-/archive/master/bzip2-master.tar.bz2")
+
+set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_version}.tar.gz")
+
+set(ffi_url "https://github.com/libffi/libffi/archive/refs/tags/v${ffi_version}.tar.gz")
+
+set(lzma_url "https://github.com/tukaani-project/xz/archive/refs/tags/v${lzma_version}.tar.gz")
+
+set(readline_url "https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz")
+
+set(ssl_url  "https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_${ssl_version}.tar.gz")
+
+set(zlib_url "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${zlib_version}.tar.gz")

@@ -9,9 +9,6 @@ if(find)
   endif()
 endif()
 
-string(JSON xz_url GET ${json_meta} xz url)
-string(JSON xz_tag GET ${json_meta} xz tag)
-
 set(xz_cmake_args)
 
-extproj_cmake(xz ${xz_url} ${xz_tag} "${xz_cmake_args}" "")
+extproj_cmake(xz ${lzma_url} "${xz_cmake_args}" "")

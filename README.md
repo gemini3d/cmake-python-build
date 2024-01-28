@@ -72,5 +72,5 @@ This seemed to be the most robust choice, as Autotools failed to configure with 
 
 Some low level prereqs aren't built by this project:
 
-* libtool: `dnf install libtool` or `brew install libtool`
+* libtool: `dnf install libtool` or `brew install libtool-bin`
 * libssl: requires Perl, `dnf install perl` or `brew install perl` for FindBin.pm

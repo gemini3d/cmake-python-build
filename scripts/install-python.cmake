@@ -7,8 +7,7 @@ include(FetchContent)
 option(CMAKE_TLS_VERIFY "verify TLS certificates" on)
 
 if(NOT python_version)
-  file(READ ${CMAKE_CURRENT_LIST_DIR}/../libraries.json json_meta)
-  string(JSON python_version GET ${json_meta} "python" "version")
+  set(python_version 3.12.1)
 endif()
 
 if(NOT prefix)
@@ -33,7 +32,7 @@ endif()
 if(NOT python_url)
   # omit "rc*" from the url dir
   string(REGEX REPLACE "rc[0-9]+$" "" python_url_dir "${python_version}")
-  set(python_url https://www.python.org/ftp/python/${python_url_dir}/python-${python_version}-embed-${pyarch}.zip)
+  set( https://www.python.org/ftp/python/${python_url_dir}/python-${python_version}-embed-${pyarch}.zip)
 endif()
 
 message(STATUS "Python ${python_version}  ${python_url}")

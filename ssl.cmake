@@ -26,8 +26,6 @@ if(OPENSSL_FOUND)
   return()
 endif()
 
-string(JSON ssl_url GET ${json_meta} ssl url)
-
 set(ssl_config_args
 --openssldir=${CMAKE_INSTALL_PREFIX}
 --prefix=${CMAKE_INSTALL_PREFIX}
