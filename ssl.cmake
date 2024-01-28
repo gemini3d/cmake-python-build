@@ -27,7 +27,6 @@ if(OPENSSL_FOUND)
 endif()
 
 string(JSON ssl_url GET ${json_meta} ssl url)
-string(JSON ssl_tag GET ${json_meta} ssl tag)
 
 set(ssl_config_args
 --openssldir=${CMAKE_INSTALL_PREFIX}
@@ -42,12 +41,10 @@ endif()
 # --no-weak-ssl-ciphers
 
 ExternalProject_Add(ssl
-GIT_REPOSITORY ${ssl_url}
-GIT_TAG ${ssl_tag}
-GIT_SHALLOW true
+URL ${ssl_url}
 CONFIGURE_COMMAND <SOURCE_DIR>/config ${ssl_config_args}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
-INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install_sw
+INSTALL_COMMAND ${MAKE_EXECUTABLE} install_sw
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON
 ${terminal_verbose}

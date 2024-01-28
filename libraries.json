@@ -22,15 +22,14 @@
   "url": "https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz"
 },
 "ssl": {
-  "url": "https://github.com/openssl/openssl.git",
-  "tag": "OpenSSL_1_1_1w"
+  "url": "https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1w.tar.gz"
 },
 "xz": {
   "url": "https://github.com/tukaani-project/xz.git",
-  "tag": "v5.4.5"
+  "tag": "v5.4.6"
 },
 "zlib": {
   "url" : "https://github.com/zlib-ng/zlib-ng.git",
-  "tag": "2.1.5"
+  "tag": "2.1.6"
 }
 }

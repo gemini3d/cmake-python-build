@@ -75,7 +75,7 @@ ExternalProject_Add(python
 ${python_download}
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
 BUILD_COMMAND ${MAKE_EXECUTABLE} -j
-INSTALL_COMMAND ${MAKE_EXECUTABLE} -j install
+INSTALL_COMMAND ${MAKE_EXECUTABLE} install
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON
 DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
