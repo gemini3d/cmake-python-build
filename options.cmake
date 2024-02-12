@@ -25,16 +25,21 @@ endif()
 
 find_package(Autotools REQUIRED)
 
-set(python_version "3.12.1")
+set(python_version "3.12.2")
 
-set(expat_version "2_5_0")
+# https://github.com/libexpat/libexpat/releases
+set(expat_version "2_6_0")
 
+# https://github.com/libffi/libffi/releases
 set(ffi_version "3.4.4")
 
+# https://github.com/tukaani-project/xz/releases
 set(lzma_version "5.4.6")
 
+# https://github.com/openssl/openssl/releases
 set(ssl_version "1_1_1w")
 
+# https://github.com/zlib-ng/zlib-ng/releases
 set(zlib_version "2.1.6")
 
 if(AUTOCONF_VERSION VERSION_LESS 2.71)
