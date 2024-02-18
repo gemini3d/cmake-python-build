@@ -31,7 +31,6 @@ endforeach()
 set(python_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 CC=${CMAKE_C_COMPILER}
---with-system-expat
 )
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   list(APPEND python_args --enable-optimizations)
@@ -41,7 +40,7 @@ set(python_cflags "${CMAKE_C_FLAGS}")
 set(python_ldflags "${LDFLAGS}")
 
 if(OPENSSL_FOUND)
-  get_filename_component(openssl_dir ${OPENSSL_INCLUDE_DIR} DIRECTORY)
+  cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
   list(APPEND python_args --with-openssl=${openssl_dir})
 else()
   list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})

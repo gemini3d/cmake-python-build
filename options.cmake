@@ -40,6 +40,9 @@ set(ffi_version "3.4.6")
 # https://github.com/tukaani-project/xz/releases
 set(lzma_version "5.4.6")
 
+# https://ftp.gnu.org/gnu/readline/?C=M;O=D
+set(readline_version "8.2")
+
 # https://github.com/openssl/openssl/releases
 set(ssl_version "1_1_1w")
 
@@ -65,7 +68,7 @@ set(ffi_url "https://github.com/libffi/libffi/archive/refs/tags/v${ffi_version}.
 
 set(lzma_url "https://github.com/tukaani-project/xz/archive/refs/tags/v${lzma_version}.tar.gz")
 
-set(readline_url "https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz")
+set(readline_url "https://ftp.gnu.org/gnu/readline/readline-${readline_version}.tar.gz")
 
 set(ssl_url  "https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_${ssl_version}.tar.gz")
 
