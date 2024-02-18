@@ -54,7 +54,7 @@ message(STATUS "Python LDFLAGS: ${python_ldflags}")
 ExternalProject_Add(python
 URL ${python_url}
 CONFIGURE_COMMAND <SOURCE_DIR>/configure ${python_args} CFLAGS=${python_cflags} LDFLAGS=${python_ldflags}
-BUILD_COMMAND ${MAKE_EXECUTABLE} -j
+BUILD_COMMAND ${MAKE_EXECUTABLE} -j${Ncpu}
 INSTALL_COMMAND ${MAKE_EXECUTABLE} install
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON

@@ -15,9 +15,6 @@ cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
 cmake --build build
 ```
 
-Note: there seems to be a race condition on macOS in the "make install" Python step.
-Try `cmake --build build` again if it fails; it should succeed the second time.
-
 Optional: check that Python built-in libraries are working:
 
 ```sh
