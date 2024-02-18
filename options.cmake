@@ -35,7 +35,7 @@ set(python_version "3.12.2")
 set(expat_version "2_6_0")
 
 # https://github.com/libffi/libffi/releases
-set(ffi_version "3.4.4")
+set(ffi_version "3.4.6")
 
 # https://github.com/tukaani-project/xz/releases
 set(lzma_version "5.4.6")
