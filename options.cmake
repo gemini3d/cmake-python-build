@@ -29,16 +29,17 @@ endif()
 
 find_package(Autotools REQUIRED)
 
+# https://www.python.org/downloads/source/
 set(python_version "3.12.2")
 
 # https://github.com/libexpat/libexpat/releases
-set(expat_version "2_6_0")
+set(expat_version "2_6_1")
 
 # https://github.com/libffi/libffi/releases
 set(ffi_version "3.4.6")
 
 # https://github.com/tukaani-project/xz/releases
-set(lzma_version "5.4.6")
+set(lzma_version "5.6.0")
 
 # https://ftp.gnu.org/gnu/readline/?C=M;O=D
 set(readline_version "8.2")
