@@ -38,8 +38,8 @@ set(expat_version "2_6_1")
 # https://github.com/libffi/libffi/releases
 set(ffi_version "3.4.6")
 
-# https://github.com/tukaani-project/xz/releases
-set(lzma_version "5.6.0")
+# disabled until CVE is resolved
+set(lzma_version "")
 
 # https://ftp.gnu.org/gnu/readline/?C=M;O=D
 set(readline_version "8.2")
@@ -67,7 +67,8 @@ set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_
 
 set(ffi_url "https://github.com/libffi/libffi/archive/refs/tags/v${ffi_version}.tar.gz")
 
-set(lzma_url "https://github.com/tukaani-project/xz/archive/refs/tags/v${lzma_version}.tar.gz")
+# disabled until CVE is resolved
+set(lzma_url "")
 
 set(readline_url "https://ftp.gnu.org/gnu/readline/readline-${readline_version}.tar.gz")
 
