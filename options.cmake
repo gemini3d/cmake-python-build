@@ -30,19 +30,19 @@ endif()
 find_package(Autotools REQUIRED)
 
 # https://www.python.org/downloads/source/
-set(python_version "3.12.2")
+set(python_version "3.12.4")
 
 # https://github.com/libexpat/libexpat/releases
-set(expat_version "2_6_1")
+set(expat_version "2_6_2")
 
 # https://github.com/libffi/libffi/releases
 set(ffi_version "3.4.6")
 
-# disabled until CVE is resolved
-set(lzma_version "")
+# https://github.com/tukaani-project/xz/releases
+set(lzma_version "5.6.2")
 
 # https://ftp.gnu.org/gnu/readline/?C=M;O=D
-set(readline_version "8.2")
+set(readline_version "8.3")
 
 # https://github.com/openssl/openssl/releases
 set(ssl_version "1_1_1w")
@@ -67,8 +67,7 @@ set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_
 
 set(ffi_url "https://github.com/libffi/libffi/archive/refs/tags/v${ffi_version}.tar.gz")
 
-# disabled until CVE is resolved
-set(lzma_url "")
+set(lzma_url "https://github.com/tukaani-project/xz/releases")
 
 set(readline_url "https://ftp.gnu.org/gnu/readline/readline-${readline_version}.tar.gz")
 
