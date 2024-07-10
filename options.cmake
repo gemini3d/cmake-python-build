@@ -48,7 +48,7 @@ set(readline_version "8.3")
 set(ssl_version "1_1_1w")
 
 # https://github.com/zlib-ng/zlib-ng/releases
-set(zlib_version "2.1.6")
+set(zlib_version "2.2.1")
 
 if(AUTOCONF_VERSION VERSION_LESS 2.71)
   set(ffi_version "3.4.2")
