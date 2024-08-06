@@ -4,8 +4,6 @@ cmake_minimum_required(VERSION 3.24)
 
 include(FetchContent)
 
-option(CMAKE_TLS_VERIFY "verify TLS certificates" on)
-
 if(NOT python_version)
   set(python_version 3.12.1)
 endif()

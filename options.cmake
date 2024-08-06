@@ -1,8 +1,6 @@
 option(find "search for packages" on)
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
-option(CMAKE_TLS_VERIFY "verify TLS certificates" on)
-
 set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
