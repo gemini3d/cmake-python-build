@@ -10,7 +10,7 @@ this project is a thin use of CMake ExternalProject to build Python via its own 
 ## Build
 
 ```sh
-cmake -B build -DCMAKE_INSTALL_PREFIX=~/mydir
+cmake -B build --install-prefix=$HOME/python-local
 
 cmake --build build
 ```
@@ -21,7 +21,7 @@ Optional: check that Python built-in libraries are working:
 ctest --test-dir build -V
 ```
 
-That makes binaries including: ~/mydir/bin/[python3,pip3].
+That makes binaries including: ~/python-local/bin/[python3,pip3].
 If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
 
 ### Options
@@ -35,10 +35,10 @@ Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
 
-`-Dpython_version="3.12.1"`
+`-Dpython_version="3.12.5"`
 : select Python Git tag to build.
 
-`-Dpython_url="https://www.python.org/ftp/python/3.12.1/Python-3.12.1.tar.xz"`
+`-Dpython_url="https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz"`
 : URL is automatically determined from the version, but can be overridden.
 
 ## Why?

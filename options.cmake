@@ -28,7 +28,9 @@ endif()
 find_package(Autotools REQUIRED)
 
 # https://www.python.org/downloads/source/
-set(python_version "3.12.4")
+if(NOT DEFINED python_version)
+set(python_version "3.12.5")
+endif()
 
 # https://github.com/libexpat/libexpat/releases
 set(expat_version "2_6_2")
