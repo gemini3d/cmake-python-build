@@ -9,11 +9,6 @@ if(find)
   endif()
 endif()
 
-if(NOT url)
-  message(STATUS "${name}: skipping because URL is empty")
-  add_custom_target(xz)
-endif()
-
 set(xz_cmake_args)
 
 extproj_cmake(xz "${lzma_url}" "${xz_cmake_args}" "")

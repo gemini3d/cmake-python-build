@@ -71,3 +71,7 @@ Some low level prereqs aren't built by this project:
 
 * libtool: `dnf install libtool` or `brew install libtool-bin`
 * libssl: requires Perl, `dnf install perl` or `brew install perl` for FindBin.pm
+
+## OpenSSL
+
+Python 3.11 and newer generally [work with OpenSSL 3](https://github.com/python/cpython/issues/99079).
