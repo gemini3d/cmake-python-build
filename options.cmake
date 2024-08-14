@@ -27,28 +27,30 @@ endif()
 
 find_package(Autotools REQUIRED)
 
+file(READ ${CMAKE_CURRENT_LIST_DIR}/libraries.json json)
+
 # https://www.python.org/downloads/source/
 if(NOT DEFINED python_version)
-set(python_version "3.12.5")
+  string(JSON python_version GET ${json} "python_version")
 endif()
 
 # https://github.com/libexpat/libexpat/releases
-set(expat_version "2_6_2")
+string(JSON expat_version GET ${json} "expat_version")
 
 # https://github.com/libffi/libffi/releases
-set(ffi_version "3.4.6")
+string(JSON ffi_version GET ${json} "ffi_version")
 
 # https://github.com/tukaani-project/xz/releases
-set(lzma_version "5.6.2")
+string(JSON lzma_version GET ${json} "lzma_version")
 
 # https://ftp.gnu.org/gnu/readline/?C=M;O=D
-set(readline_version "8.2")
+string(JSON readline_version GET ${json} "readline_version")
 
 # https://github.com/openssl/openssl/releases
-set(ssl_version "3.3.1")
+string(JSON ssl_version GET ${json} "ssl_version")
 
 # https://github.com/zlib-ng/zlib-ng/releases
-set(zlib_version "2.2.1")
+string(JSON zlib_version GET ${json} "zlib_version")
 
 if(AUTOCONF_VERSION VERSION_LESS 2.71)
   set(ffi_version "3.4.2")

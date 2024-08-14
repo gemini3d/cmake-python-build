@@ -5,11 +5,16 @@ cmake_minimum_required(VERSION 3.24)
 include(FetchContent)
 
 if(NOT python_version)
-  set(python_version 3.12.1)
+  file(READ ${CMAKE_CURRENT_LIST_DIR}/../libraries.json json)
+  string(JSON python_version GET ${json} "python_version")
 endif()
 
 if(NOT prefix)
   file(REAL_PATH "~/python-${python_version}" prefix EXPAND_TILDE)
+endif()
+
+if(NOT WIN32)
+  message(FATAL_ERROR "Windows only")
 endif()
 
 if(NOT DEFINED ENV{PROCESSOR_ARCHITECTURE})

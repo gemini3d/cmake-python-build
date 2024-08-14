@@ -1,0 +1,9 @@
+{
+    "python_version": "3.12.5",
+    "expat_version": "2_6_2",
+    "ffi_version": "3.4.6",
+    "lzma_version": "5.6.2",
+    "readline_version": "8.2",
+    "ssl_version": "3.3.1",
+    "zlib_version": "2.2.1"
+}
