@@ -1,23 +1,6 @@
 # installs OpenSSL CMAKE_INSTALL_PREFIX/lib64/lib{crypto,ssl}.{a,so}
 
 if(find)
-  if(APPLE AND NOT OPENSSL_ROOT_DIR)
-    # MacOS needs hints to find OpenSSL from Homebrew
-    find_program(BREW NAMES brew)
-    if(BREW)
-      execute_process(COMMAND ${BREW} --prefix openssl@1.1
-      RESULT_VARIABLE ret
-      OUTPUT_VARIABLE out
-      OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
-      if(ret EQUAL 0)
-        if(IS_DIRECTORY ${out})
-          set(OPENSSL_ROOT_DIR ${out})
-        endif()
-      endif()
-    endif()
-  endif()
-
   find_package(OpenSSL)
 endif(find)
 
