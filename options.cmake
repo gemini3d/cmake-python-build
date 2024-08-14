@@ -12,7 +12,7 @@ else()
 endif()
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set_property(CACHE CMAKE_INSTALL_PREFIX PROPERTY VALUE "${PROJECT_BINARY_DIR}/local")
+  message(FATAL_ERROR "Please set cmake --install-prefix to desired install location")
 endif()
 
 # exclude Anaconda directories from search
