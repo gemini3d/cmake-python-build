@@ -1,9 +1,10 @@
 {
-    "python_version": "3.12.5",
-    "expat_version": "2_6_2",
-    "ffi_version": "3.4.6",
-    "lzma_version": "5.6.2",
-    "readline_version": "8.2",
-    "ssl_version": "3.3.1",
-    "zlib_version": "2.2.1"
+    "python": "3.12.5",
+    "bzip": "master",
+    "expat": "2_6_2",
+    "ffi": "3.4.6",
+    "lzma": "5.6.2",
+    "readline": "8.2",
+    "ssl": "3.3.1",
+    "zlib": "2.2.1"
 }
