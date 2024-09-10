@@ -1,5 +1,5 @@
 {
-    "python": "3.12.5",
+    "python": "3.12.6",
     "bzip": "master",
     "expat": "2_6_2",
     "ffi": "3.4.6",
