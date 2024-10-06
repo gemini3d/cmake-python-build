@@ -35,10 +35,10 @@ Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
 
-`-Dpython_version="3.12.5"`
+`-Dpython_version="3.12.7"`
 : select Python Git tag to build.
 
-`-Dpython_url="https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz"`
+`-Dpython_url="https://www.python.org/ftp/python/3.12.7/Python-3.12.7.tar.xz"`
 : URL is automatically determined from the version, but can be overridden.
 
 ## Why?

@@ -56,7 +56,7 @@ find_file(pth
 NAMES python${python_version_short}._pth
 HINTS ${prefix}
 NO_DEFAULT_PATH
-REQUIRE
+REQUIRED
 )
 
 file(RENAME ${pth} ${prefix}/python${python_version_short}.pth)
