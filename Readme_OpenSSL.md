@@ -27,8 +27,6 @@ OpenSSL 3.4.0, Python 3.13.0:
 ```
 [ERROR] _hashlib failed to import: /tmp/build-python/python-prefix/src/python-build/build/lib.linux-x86_64-3.13/_hashlib.cpython-313-x86_64-linux-gnu.so: undefined symbol: EVP_MD_CTX_get_size_ex
 [ERROR] _ssl failed to import: /tmp/build-python/python-prefix/src/python-build/build/lib.linux-x86_64-3.13/_ssl.cpython-313-x86_64-linux-gnu.so: undefined symbol: X509_STORE_get1_objects
-The following modules are *disabled* in configure script:
-_sqlite3
 
 The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter
@@ -46,8 +44,6 @@ OpenSSL 3.3.2, Python 3.13.0:
 
 ```
 [ERROR] _ssl failed to import: /tmp/build-python/python-prefix/src/python-build/build/lib.linux-x86_64-3.13/_ssl.cpython-313-x86_64-linux-gnu.so: undefined symbol: X509_STORE_get1_objects
-The following modules are *disabled* in configure script:
-_sqlite3
 
 The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter

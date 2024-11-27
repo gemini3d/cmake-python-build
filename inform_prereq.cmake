@@ -1,3 +1,5 @@
+# https://devguide.python.org/getting-started/setup-building/index.html#build-dependencies
+
 find_path(UUID_INCLUDE_DIR
 NAMES uuid.h
 PATH_SUFFIXES uuid
@@ -23,4 +25,17 @@ if(READLINE_INCLUDE_DIR)
 else()
   message(STATUS "Readline is missing")
   message(STATUS "apt install libreadline-dev  or  dnf install readline-devel  or  brew install readline")
+endif()
+
+
+find_path(SQLITE3_INCLUDE_DIR
+NAMES sqlite3.h
+PATH_SUFFIXES sqlite3
+)
+
+if(SQLITE3_INCLUDE_DIR)
+  message(STATUS "SQLite3 header found ${SQLITE3_INCLUDE_DIR}")
+else()
+  message(STATUS "SQLite3 is missing")
+  message(STATUS "apt install libsqlite3-dev  or  dnf install sqlite-devel  or  brew install sqlite")
 endif()

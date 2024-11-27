@@ -28,15 +28,12 @@ Typical config log (just before install step) is like the following.
 In particular, lzma and ssl should not be missing.
 
 ```
-The following modules are *disabled* in configure script:
-_sqlite3
-
 The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter
-_uuid                     readline
+readline
 To find the necessary bits, look in configure.ac and config.log.
 
-Checked 112 modules (34 built-in, 71 shared, 1 n/a on linux-x86_64, 1 disabled, 5 missing, 0 failed on import)
+Checked 112 modules (34 built-in, 73 shared, 1 n/a on linux-x86_64, 0 disabled, 4 missing, 0 failed on import)
 ```
 
 ### Options

@@ -1,4 +1,5 @@
-# Linux prereqs: https://devguide.python.org/setup/#linux
+# Linux prereqs:
+# https://devguide.python.org/getting-started/setup-building/index.html#build-dependencies
 
 # prereqs
 foreach(l IN ITEMS bzip2 expat ffi lzma ssl zlib)
