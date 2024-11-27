@@ -85,8 +85,12 @@ string(APPEND CMAKE_MODULE_LINKER_FLAGS_INIT " ${LDFLAGS}")
 
 # --- Python itself
 
-include(python.cmake)
-
+if(WIN32)
+  include(python_msvc.cmake)
+else()
+  include(inform_prereq.cmake)
+  include(python.cmake)
+endif()
 
 message(STATUS "CMake ${CMAKE_VERSION} building Python ${python_version}")
 message(STATUS "${python_url} => ${CMAKE_INSTALL_PREFIX}")
