@@ -1,5 +1,11 @@
 option(find "search for packages" on)
-option(find_ssl "search for OpenSSL" on)
+option(find_bzip2 "search for bzip2" ${find})
+option(find_expat "search for expat" ${find})
+option(find_ffi "search for ffi" ${find})
+option(find_lzma "search for lzma" ${find})
+option(find_readline "search for readline" ${find})
+option(find_ssl "search for OpenSSL" ${find})
+option(find_zlib "search for zlib" ${find})
 
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 

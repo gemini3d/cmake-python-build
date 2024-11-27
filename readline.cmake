@@ -1,6 +1,6 @@
 # readline
 
-if(find)
+if(find_readline)
   find_library(libreadline NAMES readline)
   if(libreadline)
     message(STATUS "Found Readline: ${libreadline}")

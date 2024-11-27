@@ -10,6 +10,11 @@ To use system OpenSSL while building other prereqs:
 cmake -Bbuild -Dfind=no -Dfind_ssl=yes
 ```
 
+## Known compatible OpenSSL
+
+* Python 3.13.0, OpenSSL 3.0.13 (Ubuntu 24.04 default)
+* Pyhton 3.13.0, OpenSSL 3.1.7
+
 Ultimate failure of incompatible OpenSSL version may occur at Python install step:
 
 ```sh

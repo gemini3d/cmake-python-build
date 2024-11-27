@@ -2,7 +2,7 @@
 
 include(FetchContent)
 
-if(find)
+if(find_bzip2)
   find_package(BZip2)
   if(BZIP2_FOUND)
     add_custom_target(bzip2)

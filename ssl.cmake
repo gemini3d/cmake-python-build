@@ -1,12 +1,17 @@
 # installs OpenSSL CMAKE_INSTALL_PREFIX/lib64/lib{crypto,ssl}.{a,so}
 
-if(find OR find_ssl)
+if(find_ssl)
   find_package(OpenSSL)
 endif()
 
 if(OPENSSL_FOUND)
   add_custom_target(ssl)
   return()
+endif()
+
+# https://peps.python.org/pep-0644/
+if(ssl_version VERSION_LESS 1.1.1)
+  message(FATAL_ERROR "OpenSSL version 1.1.1 or later is required by Python >= 3.10.")
 endif()
 
 set(ssl_config_args

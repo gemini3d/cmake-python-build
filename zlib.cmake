@@ -1,4 +1,4 @@
-if(find)
+if(find_zlib)
   find_package(ZLIB)
 
   if(ZLIB_FOUND)

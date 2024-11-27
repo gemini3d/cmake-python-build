@@ -1,6 +1,6 @@
 # installs CMAKE_INSTALL_PREFIX/lib64/libffi.{a,so}
 
-if(find)
+if(find_ffi)
   find_library(libffi NAMES ffi)
 
   if(libffi)

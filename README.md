@@ -1,7 +1,9 @@
 # CMake Python build
 
-Build recent version of Python and its prerequisite libraries from CMake ExternalProject.
-Tested with Python 3.10 ... 3.13 and newer.
+Build recent version of
+[Python from source](https://www.python.org/downloads/source/)
+and Python prerequisite libraries using CMake ExternalProject and Autotools.
+Tested with Python 3.10 ... 3.14 and newer.
 
 This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
 
@@ -38,7 +40,7 @@ To find the necessary bits, look in configure.ac and config.log.
 ### Options
 
 `-Dfind=on`
-: (default on) searches for these libraries and builds them if not present: expat, ffi, readline, ssl, zlib
+: (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma readline ssl zlib`
 
 To use system OpenSSL while building other prereqs:
 
@@ -52,10 +54,10 @@ Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
 
-`-Dpython_version="3.12.7"`
+`-Dpython_version="3.14.0a2"`
 : select Python Git tag to build.
 
-`-Dpython_url="https://www.python.org/ftp/python/3.12.7/Python-3.12.7.tar.xz"`
+`-Dpython_url="https://www.python.org/ftp/python/3.14.0/Python-3.14.0a2.tar.xz"`
 : URL is automatically determined from the version, but can be overridden.
 
 ## Why?

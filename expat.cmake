@@ -1,6 +1,6 @@
 # installs Expat
 
-if(find)
+if(find_expat)
   find_package(EXPAT)
   if(EXPAT_FOUND)
     add_custom_target(expat)
