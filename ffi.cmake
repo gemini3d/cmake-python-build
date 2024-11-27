@@ -11,7 +11,9 @@ if(find)
 endif()
 
 if(NOT LIBTOOL_EXECUTABLE)
-  message(FATAL_ERROR "FFI needs libtool")
+  message(FATAL_ERROR "building FFI needs libtool executable. Package name:
+Debian-like: libtool-bin
+RHEL-like: libtool")
 endif()
 
 set(ffi_args --disable-docs)
