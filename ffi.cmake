@@ -7,6 +7,8 @@ if(find_ffi)
     message(STATUS "Found FFI: ${libffi}")
     add_custom_target(ffi)
     return()
+  else()
+    message(STATUS "FFI not found")
   endif()
 endif()
 

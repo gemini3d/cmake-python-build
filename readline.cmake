@@ -6,6 +6,8 @@ if(find_readline)
     message(STATUS "Found Readline: ${libreadline}")
     add_custom_target(readline)
     return()
+  else()
+    message(STATUS "Readline not found")
   endif()
 endif()
 
