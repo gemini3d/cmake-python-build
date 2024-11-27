@@ -1,4 +1,6 @@
 option(find "search for packages" on)
+option(find_ssl "search for OpenSSL" on)
+
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
 set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)

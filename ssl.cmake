@@ -1,8 +1,8 @@
 # installs OpenSSL CMAKE_INSTALL_PREFIX/lib64/lib{crypto,ssl}.{a,so}
 
-if(find)
+if(find OR find_ssl)
   find_package(OpenSSL)
-endif(find)
+endif()
 
 if(OPENSSL_FOUND)
   add_custom_target(ssl)

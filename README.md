@@ -3,9 +3,7 @@
 Build recent version of Python and its prerequisite libraries from CMake ExternalProject.
 Tested with Python 3.10 ... 3.13 and newer.
 
-Instead of
-[replacing Python's Autotools scripts completely with CMake](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem),
-this project is a thin use of CMake ExternalProject to build Python via its own Autotools scripts.
+This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
 
 ## Build
 
@@ -24,10 +22,29 @@ ctest --test-dir build -V
 That makes binaries including: ~/python-local/bin/[python3,pip3].
 If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
 
+Typical config log (just before install step) is like the following.
+In particular, lzma and ssl should not be missing.
+
+```
+The following modules are *disabled* in configure script:
+_sqlite3
+
+The necessary bits to build these optional modules were not found:
+_dbm                      _gdbm                     _tkinter
+_uuid                     readline
+To find the necessary bits, look in configure.ac and config.log.
+```
+
 ### Options
 
 `-Dfind=on`
 : (default on) searches for these libraries and builds them if not present: expat, ffi, readline, ssl, zlib
+
+To use system OpenSSL while building other prereqs:
+
+```sh
+cmake -Bbuild -Dfind=no -Dfind_ssl=yes
+```
 
 `-DCMAKE_BUILD_TYPE=Release`
 : build Python itself with optimization (default on). Building Python with optimization takes longer--about 2 minutes on a Mac Mini M1.
@@ -69,9 +86,11 @@ This seemed to be the most robust choice, as Autotools failed to configure with 
 
 Some low level prereqs aren't built by this project:
 
-* libtool: `dnf install libtool` or `brew install libtool-bin`
+* libtool: `dnf install libtool` or `brew install libtool-bin` or `apt install libtool-bin`
 * libssl: requires Perl, `dnf install perl` or `brew install perl` for FindBin.pm
 
-## OpenSSL
+[OpenSSL](./Readme_OpenSSL): Python is compatible with a certain range of OpenSSL versions.
 
-Python 3.11 and newer generally [work with OpenSSL 3](https://github.com/python/cpython/issues/99079).
+## Alternatives
+
+[replace Python's Autotools scripts completely with CMake](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem)
