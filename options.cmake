@@ -3,7 +3,6 @@ option(find_bzip2 "search for bzip2" ${find})
 option(find_expat "search for expat" ${find})
 option(find_ffi "search for ffi" ${find})
 option(find_lzma "search for lzma" ${find})
-option(find_readline "search for readline" ${find})
 option(find_ssl "search for OpenSSL" ${find})
 option(find_zlib "search for zlib" ${find})
 
@@ -59,9 +58,6 @@ string(JSON ffi_version GET ${json} "ffi")
 # https://github.com/tukaani-project/xz/releases
 string(JSON lzma_version GET ${json} "lzma")
 
-# https://ftp.gnu.org/gnu/readline/?C=M;O=D
-string(JSON readline_version GET ${json} "readline")
-
 # https://github.com/openssl/openssl/releases
 string(JSON ssl_version GET ${json} "ssl")
 
@@ -86,8 +82,6 @@ set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_
 set(ffi_url "https://github.com/libffi/libffi/archive/refs/tags/v${ffi_version}.tar.gz")
 
 set(lzma_url "https://github.com/tukaani-project/xz/archive/refs/tags/v${lzma_version}.tar.gz")
-
-set(readline_url "https://ftp.gnu.org/gnu/readline/readline-${readline_version}.tar.gz")
 
 set(ssl_url  "https://github.com/openssl/openssl/archive/refs/tags/openssl-${ssl_version}.tar.gz")
 

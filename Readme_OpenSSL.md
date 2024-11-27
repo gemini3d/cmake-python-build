@@ -32,7 +32,7 @@ _sqlite3
 
 The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter
-_uuid                     readline
+_uuid
 To find the necessary bits, look in configure.ac and config.log.
 
 Following modules built successfully but were removed because they could not be imported:
@@ -51,7 +51,7 @@ _sqlite3
 
 The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter
-_uuid                     readline
+_uuid
 To find the necessary bits, look in configure.ac and config.log.
 
 Following modules built successfully but were removed because they could not be imported:

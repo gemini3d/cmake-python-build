@@ -1,4 +1,8 @@
-# readline
+# readline -- not used because it requires tinfo, part of Ncurses
+# just install from package manager
+# apt install libreadline-dev
+# dnf install readline-devel
+# brew install readline
 
 if(find_readline)
   find_library(libreadline NAMES readline)

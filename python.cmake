@@ -23,7 +23,7 @@ endif()
 # Linux prereqs: https://devguide.python.org/setup/#linux
 
 # prereqs
-foreach(l IN ITEMS bzip2 expat ffi lzma readline ssl zlib)
+foreach(l IN ITEMS bzip2 expat ffi lzma ssl zlib)
   include(${l}.cmake)
 endforeach()
 
@@ -39,6 +39,7 @@ endif()
 set(python_cflags "${CMAKE_C_FLAGS}")
 set(python_ldflags "${LDFLAGS}")
 
+# https://docs.python.org/3/using/configure.html
 if(OPENSSL_FOUND)
   cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
   list(APPEND python_args --with-openssl=${openssl_dir})
@@ -57,6 +58,6 @@ BUILD_COMMAND ${MAKE_EXECUTABLE} -j${Ncpu}
 INSTALL_COMMAND ${MAKE_EXECUTABLE} install
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON
-DEPENDS "bzip2;expat;ffi;readline;ssl;xz;zlib"
+DEPENDS "bzip2;expat;ffi;ssl;xz;zlib"
 ${terminal_verbose}
 )

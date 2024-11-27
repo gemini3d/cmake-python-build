@@ -35,12 +35,14 @@ The necessary bits to build these optional modules were not found:
 _dbm                      _gdbm                     _tkinter
 _uuid                     readline
 To find the necessary bits, look in configure.ac and config.log.
+
+Checked 112 modules (34 built-in, 71 shared, 1 n/a on linux-x86_64, 1 disabled, 5 missing, 0 failed on import)
 ```
 
 ### Options
 
 `-Dfind=on`
-: (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma readline ssl zlib`
+: (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma ssl zlib`
 
 To use system OpenSSL while building other prereqs:
 
