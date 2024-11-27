@@ -10,6 +10,7 @@ endif()
 set(zlib_cmake_args
 -DZLIB_COMPAT:BOOL=on
 -DZLIB_ENABLE_TESTS:BOOL=off
+-DZLIBNG_ENABLE_TESTS:BOOL=off
 )
 
 # CMAKE_POSITION_INDEPENDENT_CODE=on is needed for zlib to work with Python, even when using static libs.
