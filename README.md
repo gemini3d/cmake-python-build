@@ -90,7 +90,7 @@ Some low level prereqs aren't built by this project:
 * libtool: `dnf install libtool` or `brew install libtool-bin` or `apt install libtool-bin`
 * libssl: requires Perl, `dnf install perl` or `brew install perl` for FindBin.pm
 
-[OpenSSL](./Readme_OpenSSL): Python is compatible with a certain range of OpenSSL versions.
+[OpenSSL](./Readme_OpenSSL.md): Python is compatible with a certain range of OpenSSL versions.
 
 ## Alternatives
 

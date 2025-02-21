@@ -108,24 +108,31 @@ endif()
 add_test(NAME PythonVersion COMMAND ${python_exe} --version)
 set_property(TEST PythonVersion PROPERTY PASS_REGULAR_EXPRESSION "Python ${python_version}")
 
+# https://docs.python.org/3/library/pyexpat.html
 add_test(NAME expat
 COMMAND ${python_exe} -c "import xml.parsers.expat; p = xml.parsers.expat.ParserCreate(); p.Parse('<?xml version=\"1.0\"?>')"
 )
 
+# https://docs.python.org/3/library/lzma.html
 add_test(NAME lzma
 COMMAND ${python_exe} -c "import lzma; t = b'Hi'; assert t == lzma.decompress(lzma.compress(t))"
 )
 
+# https://docs.python.org/3/library/bz2.html
 add_test(NAME bzip2
 COMMAND ${python_exe} -c "import bz2; t = b'Hi'; assert t == bz2.decompress(bz2.compress(t))"
 )
 
+# https://docs.python.org/3/library/zlib.html
 add_test(NAME zlib
-COMMAND ${python_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.compress(t))"
+COMMAND ${python_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zlib.compress(t)); print(zlib.ZLIB_VERSION)"
 )
+# set_property(TEST zlib PROPERTY PASS_REGULAR_EXPRESSION "${zlib_version}")
+# we don't use this test because Zlib-ng is currently used in legacy mode where it reports a 1.2.x version
 
-add_test(NAME ssl
-COMMAND ${python_exe} -c "import ssl; assert ssl.OPENSSL_VERSION"
-)
+# https://docs.python.org/3/library/ssl.html
+add_test(NAME SSL COMMAND ${python_exe} -c "import ssl; print(ssl.OPENSSL_VERSION)")
+set_property(TEST SSL PROPERTY PASS_REGULAR_EXPRESSION "OpenSSL ${ssl_version}")
+
 
 file(GENERATE OUTPUT .gitignore CONTENT "*")

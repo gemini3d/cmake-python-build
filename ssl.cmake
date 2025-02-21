@@ -5,6 +5,7 @@ if(find_ssl)
 endif()
 
 if(OPENSSL_FOUND)
+  set(ssl_version ${OpenSSL_VERSION})
   add_custom_target(ssl)
   return()
 endif()
