@@ -66,7 +66,7 @@ string(JSON zlib_version GET ${json} "zlib")
 
 if(AUTOCONF_VERSION VERSION_LESS 2.71)
   set(ffi_version "3.4.2")
-  message(STATUS "Set FFI ${ffi_version} since Autoconf ${AUTOCONF_VERSION} < 2.71")
+  message(STATUS "Override witu FFI ${ffi_version} since Autoconf ${AUTOCONF_VERSION} < 2.71")
 endif()
 
 if(NOT python_url)
@@ -75,7 +75,7 @@ string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}"
 set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
 endif()
 
-set(bzip2_url "https://gitlab.com/bzip2/bzip2/-/archive/master/bzip2-${bzip_version}.tar.bz2")
+set(bzip2_url "https://gitlab.com/bzip2/bzip2/-/archive/${bzip_version}/bzip2-${bzip_version}.tar.bz2")
 
 set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_version}.tar.gz")
 
