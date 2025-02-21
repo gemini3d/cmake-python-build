@@ -10,6 +10,7 @@ endforeach()
 set(python_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 CC=${CMAKE_C_COMPILER}
+CXX=${CMAKE_CXX_COMPILER}
 )
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   list(APPEND python_args --enable-optimizations)
@@ -21,10 +22,10 @@ set(python_ldflags "${LDFLAGS}")
 # https://docs.python.org/3/using/configure.html
 if(OPENSSL_FOUND)
   cmake_path(GET OPENSSL_INCLUDE_DIR PARENT_PATH openssl_dir)
-  list(APPEND python_args --with-openssl=${openssl_dir})
 else()
-  list(APPEND python_args --with-openssl=${CMAKE_INSTALL_PREFIX})
+  set(openssl_dir ${CMAKE_INSTALL_PREFIX})
 endif()
+list(APPEND python_args --with-openssl=${openssl_dir})
 
 message(STATUS "Python configure args: ${python_args}")
 message(STATUS "Python CFLAGS: ${python_cflags}")

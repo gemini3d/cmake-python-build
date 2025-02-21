@@ -3,6 +3,7 @@ function(extproj_autotools name url config_args)
 list(PREPEND config_args
 --prefix=${CMAKE_INSTALL_PREFIX}
 CC=${CMAKE_C_COMPILER}
+CXX=${CMAKE_CXX_COMPILER}
 CFLAGS=${CMAKE_C_FLAGS}
 LDFLAGS=${LDFLAGS}
 )

@@ -2,12 +2,11 @@
 
 if(find_ssl)
   find_package(OpenSSL)
-endif()
-
-if(OPENSSL_FOUND)
-  set(ssl_version ${OpenSSL_VERSION})
-  add_custom_target(ssl)
-  return()
+  if(OPENSSL_FOUND)
+    set(ssl_version ${OpenSSL_VERSION})
+    add_custom_target(ssl)
+    return()
+  endif()
 endif()
 
 # https://peps.python.org/pep-0644/
