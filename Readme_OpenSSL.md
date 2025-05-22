@@ -9,7 +9,7 @@ Compatible OpenSSL include:
 
 * Python 3.13.0, OpenSSL 3.0.13 (Ubuntu 24.04 default)
 * Python 3.13.0, OpenSSL 3.1.7
-* Python 3.13.0, OpenSSL 3.2.3
+* Python 3.13.0, OpenSSL 3.2.3, 3.2.4
 
 ## OpenSSL versions that fail with Python
 

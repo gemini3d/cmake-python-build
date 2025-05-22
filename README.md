@@ -3,7 +3,7 @@
 Build recent version of
 [Python from source](https://www.python.org/downloads/source/)
 and Python prerequisite libraries using CMake ExternalProject and Autotools.
-Tested with Python 3.10 ... 3.14 and newer.
+Tested with Python 3.11 ... 3.14 and newer.
 
 This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
 

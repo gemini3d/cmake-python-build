@@ -9,9 +9,8 @@ if(find_ssl)
   endif()
 endif()
 
-# https://peps.python.org/pep-0644/
-if(ssl_version VERSION_LESS 1.1.1)
-  message(FATAL_ERROR "OpenSSL version 1.1.1 or later is required by Python >= 3.10.")
+if(ssl_version VERSION_LESS 3)
+  message(FATAL_ERROR "OpenSSL version 3 or later is required by Python >= 3.11.")
 endif()
 
 set(ssl_config_args
