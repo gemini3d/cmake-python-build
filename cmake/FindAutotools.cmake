@@ -27,8 +27,9 @@ if(AUTOCONF_EXECUTABLE)
   )
   message(DEBUG "${out}")
   if(ret EQUAL 0)
-    string(REGEX MATCH "autoconf .*([0-9]+\\.[0-9]+)" _m "${out}")
-    set(AUTOCONF_VERSION "${CMAKE_MATCH_1}")
+    if("${out}" MATCHES "autoconf .*([0-9]+\\.[0-9]+)")
+      set(AUTOCONF_VERSION "${CMAKE_MATCH_1}")
+    endif()
   endif()
 endif()
 
@@ -53,9 +54,10 @@ NAMES gmake make
 NAMES_PER_DIR
 DOC "GNU Make")
 
+# Automake isn't required for all autotools-based projects, so we don't require it to be found.
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Autotools
 VERSION_VAR AUTOCONF_VERSION
-REQUIRED_VARS AUTOCONF_EXECUTABLE AUTOMAKE_EXECUTABLE MAKE_EXECUTABLE
+REQUIRED_VARS AUTOCONF_EXECUTABLE MAKE_EXECUTABLE
 )
