@@ -64,11 +64,6 @@ string(JSON ssl_version GET ${json} "ssl")
 # https://github.com/zlib-ng/zlib-ng/releases
 string(JSON zlib_version GET ${json} "zlib")
 
-if(AUTOCONF_VERSION VERSION_LESS 2.71)
-  set(ffi_version "3.4.2")
-  message(STATUS "Override witu FFI ${ffi_version} since Autoconf ${AUTOCONF_VERSION} < 2.71")
-endif()
-
 if(NOT python_url)
 # only major.minor.release url dir
 string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
