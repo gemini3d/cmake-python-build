@@ -41,6 +41,9 @@ Checked 112 modules (34 built-in, 73 shared, 1 n/a on linux-x86_64, 0 disabled, 
 `-Dfind=on`
 : (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma ssl zlib`
 
+[zlib-ng](https://docs.python.org/3.14/whatsnew/3.14.html#zlib)
+is used to build Zlib if needed.
+
 To use system OpenSSL while building other prereqs:
 
 ```sh
