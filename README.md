@@ -24,7 +24,7 @@ ctest --test-dir build -V
 That makes binaries including: ~/python-local/bin/[python3,pip3].
 If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
 
-Typical config log (just before install step) is like the following.
+Typical config log for Linux (just before install step) is like the following.
 In particular, lzma and ssl should not be missing.
 
 ```
@@ -34,6 +34,16 @@ readline
 To find the necessary bits, look in configure.ac and config.log.
 
 Checked 112 modules (34 built-in, 73 shared, 1 n/a on linux-x86_64, 0 disabled, 4 missing, 0 failed on import)
+```
+
+or on macOS:
+
+```
+The necessary bits to build these optional modules were not found:
+_gdbm
+To find the necessary bits, look in configure.ac and config.log.
+
+Checked 114 modules (36 built-in, 77 shared, 0 n/a on macosx-26.0-arm64, 0 disabled, 1 missing, 0 failed on import)
 ```
 
 ### Options
