@@ -3,7 +3,7 @@
 Build recent version of
 [Python from source](https://www.python.org/downloads/source/)
 and Python prerequisite libraries using CMake ExternalProject and Autotools.
-Tested with Python 3.11 ... 3.14 and newer.
+Tested with Python 3.11 ... 3.15 and newer.
 
 This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
 
@@ -66,7 +66,7 @@ Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
 
-`-Dpython_version="3.14.0a2"`
+`-Dpython_version="3.15.0a1"`
 : select Python Git tag to build.
 
 `-Dpython_url="https://www.python.org/ftp/python/3.14.0/Python-3.14.0b2.tar.xz"`
