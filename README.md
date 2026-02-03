@@ -48,6 +48,9 @@ Checked 114 modules (36 built-in, 77 shared, 0 n/a on macosx-26.0-arm64, 0 disab
 
 ### Options
 
+`-Dpython_jit=yes`
+: (default no) builds Python with JIT support (available in Python 3.13 and newer).
+
 `-Dfind=on`
 : (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma ssl zlib`
 

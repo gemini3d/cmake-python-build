@@ -6,6 +6,9 @@ option(find_lzma "search for lzma" ${find})
 option(find_ssl "search for OpenSSL" ${find})
 option(find_zlib "search for zlib" ${find})
 
+# https://github.com/python/cpython/blob/main/Tools/jit/README.md
+option(python_jit "build python with JIT support")
+
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
 set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)

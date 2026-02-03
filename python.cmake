@@ -15,6 +15,9 @@ CXX=${CMAKE_CXX_COMPILER}
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   list(APPEND python_args --enable-optimizations)
 endif()
+if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13")
+  list(APPEND python_args --enable-experimental-jit)
+endif()
 
 set(python_cflags "${CMAKE_C_FLAGS}")
 set(python_ldflags "${LDFLAGS}")
