@@ -35,7 +35,7 @@ endif()
 if(NOT python_url)
   # omit "rc*" from the url dir
   string(REGEX REPLACE "rc[0-9]+$" "" python_url_dir "${python_version}")
-  set( https://www.python.org/ftp/python/${python_url_dir}/python-${python_version}-embed-${pyarch}.zip)
+  set(python_url https://www.python.org/ftp/python/${python_url_dir}/python-${python_version}-embed-${pyarch}.zip)
 endif()
 
 message(STATUS "Python ${python_version}  ${python_url}")
