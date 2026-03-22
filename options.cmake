@@ -1,8 +1,5 @@
 option(find "search for packages" on)
-option(find_bzip2 "search for bzip2" ${find})
-option(find_expat "search for expat" ${find})
 option(find_ffi "search for ffi" ${find})
-option(find_lzma "search for lzma" ${find})
 option(find_ssl "search for OpenSSL" ${find})
 option(find_zlib "search for zlib" ${find})
 
@@ -12,6 +9,10 @@ option(python_jit "build python with JIT support")
 option(BUILD_SHARED_LIBS "build shared libraries" on)
 
 set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED true)
+set(FETCHCONTENT_UPDATE_DISCONNECTED true)
+if(NOT find)
+  set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
+endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
 

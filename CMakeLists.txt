@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20...3.31)
+cmake_minimum_required(VERSION 3.24...4.3)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   message(FATAL_ERROR "Use out of source build
@@ -39,6 +39,7 @@ endif()
 project(CPython LANGUAGES C CXX)
 
 include(ExternalProject)
+include(FetchContent)
 include(GNUInstallDirs)
 
 include(options.cmake)

@@ -1,23 +1,25 @@
 # install bzip2, needed for Python xarray/pandas
 
-include(FetchContent)
+set(ENABLE_APP false)
+set(ENABLE_DOCS false)
+set(ENABLE_EXAMPLES false)
+set(ENABLE_TESTS false)
+set(ENABLE_SHARED_LIB true)
+set(ENABLE_STATIC_LIB false)
 
-if(find_bzip2)
-  find_package(BZip2)
-  if(BZIP2_FOUND)
-    add_custom_target(bzip2)
-    return()
-  endif()
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM ${CMAKE_MINIMUM_REQUIRED_VERSION})
 endif()
 
-set(bzip2_args
--DENABLE_APP:BOOL=false
--DENABLE_DOCS:BOOL=false
--DENABLE_EXAMPLES:BOOL=false
--DENABLE_TESTS:BOOL=false
--DENABLE_SHARED_LIB:BOOL=true
--DENABLE_STATIC_LIB:BOOL=false
+FetchContent_Declare(BZip2
+  URL ${bzip2_url}
+  FIND_PACKAGE_ARGS
 )
+FetchContent_MakeAvailable(BZip2)
 
-# build
-extproj_cmake(bzip2 ${bzip2_url} "${bzip2_args}" "")
+add_custom_target(bzip2_dep)
+if(BZIP2_FOUND)
+  add_dependencies(bzip2_dep BZip2::BZip2)
+else()
+   add_dependencies(bzip2_dep bz2)
+endif()
