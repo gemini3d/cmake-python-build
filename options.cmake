@@ -1,7 +1,6 @@
 option(find "search for packages" on)
 option(find_ffi "search for ffi" ${find})
 option(find_ssl "search for OpenSSL" ${find})
-option(find_zlib "search for zlib" ${find})
 
 # https://github.com/python/cpython/blob/main/Tools/jit/README.md
 option(python_jit "build python with JIT support")

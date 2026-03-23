@@ -1,18 +1,18 @@
-if(find_zlib)
-  find_package(ZLIB)
-
-  if(ZLIB_FOUND)
-    add_custom_target(zlib)
-    return()
-  endif()
-endif()
-
-set(zlib_cmake_args
--DZLIB_COMPAT:BOOL=on
--DZLIB_ENABLE_TESTS:BOOL=off
--DZLIBNG_ENABLE_TESTS:BOOL=off
-)
+set(ZLIB_COMPAT on)
+set(BUILD_TESTING off)
+set(ZLIBNG_ENABLE_TESTS off)
 
 # CMAKE_POSITION_INDEPENDENT_CODE=on is needed for zlib to work with Python, even when using static libs.
 
-extproj_cmake(zlib ${zlib_url} "${zlib_cmake_args}" "")
+FetchContent_Declare(ZLIB
+  URL ${zlib_url}
+  FIND_PACKAGE_ARGS
+)
+FetchContent_MakeAvailable(ZLIB)
+
+add_custom_target(zlib_dep)
+if(ZLIB_FOUND)
+  add_dependencies(zlib_dep ZLIB::ZLIB)
+else()
+  add_dependencies(zlib_dep zlib)
+endif()

@@ -1,3 +1,13 @@
+set(terminal_verbose
+USES_TERMINAL_DOWNLOAD true
+USES_TERMINAL_UPDATE true
+USES_TERMINAL_PATCH true
+USES_TERMINAL_CONFIGURE true
+USES_TERMINAL_BUILD true
+USES_TERMINAL_INSTALL true
+USES_TERMINAL_TEST true
+)
+
 function(extproj_autotools name url config_args)
 
 list(PREPEND config_args
