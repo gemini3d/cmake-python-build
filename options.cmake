@@ -37,18 +37,26 @@ if(DEFINED ENV{CONDA_PREFIX})
 endif()
 set(CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH false)
 
+# must be before return()
+file(READ ${CMAKE_CURRENT_LIST_DIR}/libraries.json json)
+
+# https://www.python.org/downloads/source/
+if(NOT DEFINED python_version OR python_version STREQUAL "")
+  string(JSON python_version GET ${json} "python")
+endif()
+
+if(NOT DEFINED python_url OR python_url STREQUAL "")
+# only major.minor.release url dir
+string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
+set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
+endif()
+
 if(WIN32)
   return()
 endif()
 
 find_package(Autotools REQUIRED)
 
-file(READ ${CMAKE_CURRENT_LIST_DIR}/libraries.json json)
-
-# https://www.python.org/downloads/source/
-if(NOT DEFINED python_version)
-  string(JSON python_version GET ${json} "python")
-endif()
 
 string(JSON bzip_version GET ${json} "bzip")
 
@@ -70,12 +78,6 @@ endif()
 
 # https://github.com/zlib-ng/zlib-ng/releases
 string(JSON zlib_version GET ${json} "zlib")
-
-if(NOT python_url)
-# only major.minor.release url dir
-string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" python_url_dir "${python_version}")
-set(python_url https://www.python.org/ftp/python/${python_url_dir}/Python-${python_version}.tar.xz)
-endif()
 
 set(bzip2_url "https://gitlab.com/bzip2/bzip2/-/archive/${bzip_version}/bzip2-${bzip_version}.tar.bz2")
 
