@@ -6,6 +6,7 @@ and Python prerequisite libraries using CMake ExternalProject and Autotools.
 Tested with Python 3.11 ... 3.15 and newer.
 
 This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
+We must use ExternalProject instead of FetchContent because non-CMake packages may post-process the binary files and so FetchContent isn't suitable as we need the install step for the prereqs before Python.
 
 ## Build
 

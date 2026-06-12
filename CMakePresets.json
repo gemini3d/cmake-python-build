@@ -1,0 +1,40 @@
+{
+  "version": 6,
+
+"configurePresets": [
+{
+  "name": "default",
+  "binaryDir": "build",
+  "installDir": "build/python-install",
+  "cacheVariables": {
+    "CMAKE_BUILD_TYPE": "Release"
+  }
+}
+],
+"buildPresets": [
+  { "name": "default", "configurePreset": "default", "configuration": "Release"}
+],
+"testPresets": [
+{
+  "name": "default",
+  "configurePreset": "default",
+  "configuration": "Release",
+  "output": {
+    "outputOnFailure": true,
+    "verbosity": "verbose"
+  },
+  "execution": {
+    "noTestsAction": "error",
+    "scheduleRandom": true,
+    "stopOnFailure": false,
+    "jobs": 4
+  }
+}
+],
+"workflowPresets": [
+  { "name": "default", "displayName": "build and test", "steps": [
+      { "type": "configure", "name": "default" },
+      { "type": "build", "name": "default" },
+      { "type": "test", "name": "default" } ] }
+]
+}
