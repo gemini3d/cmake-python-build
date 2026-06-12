@@ -111,6 +111,17 @@ endif()
 add_test(NAME PythonVersion COMMAND ${python_exe} --version)
 set_property(TEST PythonVersion PROPERTY PASS_REGULAR_EXPRESSION "Python ${python_version}")
 
+add_test(NAME ctypes
+  COMMAND ${python_exe} -c "
+import ctypes
+lib = ctypes.CDLL(None)  # Load libc
+
+t = lib.time(None)
+assert isinstance(t, int)
+print('ctypes successfully called libc.time() ->', t)
+"
+)
+
 add_test(NAME decimal
 COMMAND ${python_exe} -c "import decimal; print(decimal.__version__)"
 )
