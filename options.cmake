@@ -1,3 +1,7 @@
+if(NOT python_release)
+  set(python_release "3.15")
+endif()
+
 option(find "search for packages" on)
 option(find_bzip2 "search for bzip2" ${find})
 option(find_expat "search for expat" ${find})
@@ -42,7 +46,7 @@ file(READ ${CMAKE_CURRENT_LIST_DIR}/libraries.json json)
 
 # https://www.python.org/downloads/source/
 if(NOT DEFINED python_version OR python_version STREQUAL "")
-  string(JSON python_version GET ${json} "python")
+  string(JSON python_version GET ${json} "python" "${python_release}")
 endif()
 
 if(NOT DEFINED python_url OR python_url STREQUAL "")

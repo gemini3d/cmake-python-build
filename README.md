@@ -70,7 +70,10 @@ cmake -Bbuild -Dfind=no -Dfind_ssl=yes
 (default on). Building Python with optimization takes longer--about 2 minutes on a Mac Mini M1.
 Other libraries are always set to optimize.
 
-Optionally, select Python version *or* URL like:
+Optionally, select Python release, version, *or* URL like:
+
+`-Dpython_release="3.15"`
+: select Python release to build, e.g. 3.15.
 
 `-Dpython_version="3.15.0b2"`
 : select Python Git tag to build.
@@ -98,6 +101,7 @@ Tested on Linux and MacOS with compilers including:
 
 * Apple Clang
 * Linux: GCC 4.8 and newer
+* Windows: Visual Studio 2022 and newer - Python 3.15 or newer is required for Visual Studio 2026
 
 The CMakeLists.txt automatically forces "clang" on MacOS and "gcc" on Linux.
 This seemed to be the most robust choice, as Autotools failed to configure with choices like "gcc-*version*" and Intel "icx" took 100x longer than GCC to build.
