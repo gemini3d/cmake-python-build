@@ -28,7 +28,9 @@ if(EXPAT_FOUND)
   # https://docs.python.org/3/using/configure.html#cmdoption-with-system-expat
   list(APPEND python_args --with-system-expat)
 endif()
-
+if(FFI_FOUND)
+  list(APPEND python_args LIBFFI_LIBS="${CMAKE_LIBRARY_PATH_FLAG}${FFI_LIBRARY_DIR} ${CMAKE_LINK_LIBRARY_FLAG}${FFI_LIBRARY}")
+endif()
 
 
 set(python_cflags "${CMAKE_C_FLAGS}")

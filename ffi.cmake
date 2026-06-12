@@ -2,8 +2,11 @@
 
 if(find_ffi)
   find_library(libffi NAMES ffi)
+  cmake_path(GET libffi PARENT_PATH FFI_LIBRARY_DIR)
+  cmake_path(GET libffi FILENAME FFI_LIBRARY)
 
   if(libffi)
+    set(FFI_FOUND TRUE)
     message(STATUS "Found FFI: ${libffi}")
     add_custom_target(ffi)
     return()
