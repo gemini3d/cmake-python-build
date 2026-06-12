@@ -53,6 +53,6 @@ BUILD_COMMAND ${MAKE_EXECUTABLE} -j${Ncpu}
 INSTALL_COMMAND ${MAKE_EXECUTABLE} install
 TEST_COMMAND ""
 CONFIGURE_HANDLED_BY_BUILD ON
-DEPENDS "bzip2_dep;expat_dep;ffi;lzma_dep;ssl;zlib_dep"
+DEPENDS "bzip2_dep;expat_dep;ffi;lzma_dep;ssl;zlib"
 ${terminal_verbose}
 )

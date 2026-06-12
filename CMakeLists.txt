@@ -44,6 +44,8 @@ include(GNUInstallDirs)
 
 include(options.cmake)
 
+include(cmake/ExtProjCMake.cmake)
+
 if(NOT WIN32)
   include(cmake/ExtProjAutotools.cmake)
 endif()
