@@ -49,7 +49,7 @@ Checked 114 modules (36 built-in, 77 shared, 0 n/a on macosx-26.0-arm64, 0 disab
 ### Options
 
 `-Dpython_jit=yes`
-: (default no) builds Python with JIT support (available in Python 3.13 and newer).
+: (default no) builds Python with [JIT support](https://blog.python.org/2026/03/jit-on-track/). Available in Python 3.13 and newer.
 
 `-Dfind=on`
 : (default on) searches for these libraries and builds them if not present: `bzip2 expat ffi lzma ssl zlib`
@@ -69,10 +69,10 @@ Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
 
-`-Dpython_version="3.15.0a7"`
+`-Dpython_version="3.15.0b2"`
 : select Python Git tag to build.
 
-`-Dpython_url="https://www.python.org/ftp/python/3.15.0/Python-3.15.0a7.tar.xz"`
+`-Dpython_url="https://www.python.org/ftp/python/3.15.0/Python-3.15.0b2.tar.xz"`
 : URL is automatically determined from the version, but can be overridden.
 
 ## Why?

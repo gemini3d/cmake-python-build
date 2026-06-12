@@ -39,3 +39,25 @@ else()
   message(STATUS "SQLite3 is missing")
   message(STATUS "apt install libsqlite3-dev  or  dnf install sqlite-devel  or  brew install sqlite")
 endif()
+
+
+# Zstd
+find_package(zstd CONFIG)
+if(zstd_FOUND)
+  message(STATUS "Zstd found ${zstd_DIR}")
+else()
+  message(STATUS "Zstd is missing")
+  message(STATUS "apt install libzstd-dev  or  dnf install zstd-devel  or  brew install zstd")
+endif()
+
+
+# decimal
+find_path(DECIMAL_INCLUDE_DIR
+NAMES mpdecimal.h)
+
+if(DECIMAL_INCLUDE_DIR)
+  message(STATUS "Decimal header found ${DECIMAL_INCLUDE_DIR}")
+else()
+  message(STATUS "Decimal is missing")
+  message(STATUS "apt install libmpdec-dev  or  dnf install mpdecimal-devel  or  brew install mpdecimal")
+endif()
