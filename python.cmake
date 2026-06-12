@@ -13,11 +13,23 @@ CC=${CMAKE_C_COMPILER}
 CXX=${CMAKE_CXX_COMPILER}
 )
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  # https://docs.python.org/3/using/configure.html#cmdoption-enable-optimizations
   list(APPEND python_args --enable-optimizations)
 endif()
 if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13")
   list(APPEND python_args --enable-experimental-jit)
 endif()
+
+if(BZip2_FOUND)
+  # https://docs.python.org/3/using/configure.html#cmdoption-arg-BZIP2_CFLAGS
+  list(APPEND python_args BZIP2_CFLAGS="-I${BZIP2_INCLUDE_DIRS}")
+endif()
+if(EXPAT_FOUND)
+  # https://docs.python.org/3/using/configure.html#cmdoption-with-system-expat
+  list(APPEND python_args --with-system-expat)
+endif()
+
+
 
 set(python_cflags "${CMAKE_C_FLAGS}")
 set(python_ldflags "${LDFLAGS}")

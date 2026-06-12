@@ -64,7 +64,9 @@ cmake -Bbuild -Dfind=no -Dfind_ssl=yes
 ```
 
 `-DCMAKE_BUILD_TYPE=Release`
-: build Python itself with optimization (default on). Building Python with optimization takes longer--about 2 minutes on a Mac Mini M1.
+: build Python itself with
+[optimization](https://docs.python.org/3/using/configure.html#cmdoption-enable-optimizations)
+(default on). Building Python with optimization takes longer--about 2 minutes on a Mac Mini M1.
 Other libraries are always set to optimize.
 
 Optionally, select Python version *or* URL like:
@@ -110,4 +112,5 @@ Some low level prereqs aren't built by this project:
 
 ## Alternatives
 
-[replace Python's Autotools scripts completely with CMake](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem)
+* [Shell scripts](https://github.com/astral-sh/python-build-standalone) for reproducible Python builds; not CMake-based.
+* [replace Python's Autotools scripts completely with CMakeLists.txt](https://github.com/python-cmake-buildsystem/python-cmake-buildsystem)
