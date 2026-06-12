@@ -2,15 +2,23 @@
 
 Python is compatible with a certain range of
 [OpenSSL versions](https://github.com/openssl/openssl/blob/master/CHANGES.md).
-Python 3.11 and newer
+
+* Python 3.11 and newer
 [can work with OpenSSL 3](https://github.com/python/cpython/issues/99079).
+* Python 3.15 and newer work with
+[OpenSSL 3.5.x or 4.x](https://github.com/python/cpython/issues/148600), which might be backported to
+[Python 3.14](https://github.com/python/cpython/pull/149783)
+
+See
+[CPython CI yaml](https://github.com/vstinner/cpython/blob/92c9dafe156e3c7d72b03f5c551adc03d0c79b51/.github/workflows/build.yml#L301)
+for OpenSSL versions tested in CPython CI.
 
 Compatible OpenSSL include:
 
 * Python 3.13.0, OpenSSL 3.0.13 (Ubuntu 24.04 default)
 * Python 3.13.0, OpenSSL 3.1.7
 * Python 3.13.0, OpenSSL 3.2.3, 3.2.4
-* OpenSSL [3.5.x](https://github.com/python/cpython/issues/132339)
+* OpenSSL [3.5.x](https://github.com/python/cpython/issues/132339) LTS
 
 ## OpenSSL versions that fail with Python
 

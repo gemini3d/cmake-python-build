@@ -62,7 +62,11 @@ string(JSON ffi_version GET ${json} "ffi")
 string(JSON lzma_version GET ${json} "lzma")
 
 # https://github.com/openssl/openssl/releases
-string(JSON ssl_version GET ${json} "ssl")
+if(python_version VERSION_LESS "3.15")
+  string(JSON ssl_version GET ${json} "ssl" "3.5")
+else()
+  string(JSON ssl_version GET ${json} "ssl" "4.0")
+endif()
 
 # https://github.com/zlib-ng/zlib-ng/releases
 string(JSON zlib_version GET ${json} "zlib")
