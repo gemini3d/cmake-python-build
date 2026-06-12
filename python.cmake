@@ -31,6 +31,12 @@ endif()
 if(FFI_FOUND)
   list(APPEND python_args LIBFFI_LIBS="${CMAKE_LIBRARY_PATH_FLAG}${FFI_LIBRARY_DIR} ${CMAKE_LINK_LIBRARY_FLAG}${FFI_LIBRARY}")
 endif()
+if(zstd_FOUND)
+  get_target_property(zstd_INCLUDE_DIRS zstd::libzstd INTERFACE_INCLUDE_DIRECTORIES)
+  if(zstd_INCLUDE_DIRS)
+    list(APPEND python_args LIBZSTD_CFLAGS="-I${zstd_INCLUDE_DIRS}")
+  endif()
+endif()
 
 
 set(python_cflags "${CMAKE_C_FLAGS}")
