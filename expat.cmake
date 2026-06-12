@@ -1,21 +1,18 @@
 # installs Expat
 
-set(EXPAT_BUILD_DOCS OFF)
-set(EXPAT_BUILD_EXAMPLES OFF)
-set(EXPAT_BUILD_TESTS OFF)
-set(EXPAT_BUILD_TOOLS OFF)
+if(find_expat)
+  find_package(EXPAT)
+  if(EXPAT_FOUND)
+    add_custom_target(expat)
+    return()
+  endif()
+endif()
 
-FetchContent_Declare(EXPAT
-URL ${expat_url}
-SOURCE_SUBDIR expat/
-FIND_PACKAGE_ARGS
+set(expat_args
+-DEXPAT_BUILD_DOCS:BOOL=false
+-DEXPAT_BUILD_EXAMPLES:BOOL=false
+-DEXPAT_BUILD_TESTS:BOOL=false
+-DEXPAT_BUILD_TOOLS:BOOL=false
 )
 
-FetchContent_MakeAvailable(EXPAT)
-
-add_custom_target(expat_dep)
-if(EXPAT_FOUND)
-  add_dependencies(expat_dep EXPAT::EXPAT)
-else()
-  add_dependencies(expat_dep expat::expat)
-endif()
+extproj_cmake(expat ${expat_url} "${expat_args}" "expat")
