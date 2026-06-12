@@ -1,7 +1,5 @@
 # install bzip2, needed for Python xarray/pandas
 
-include(FetchContent)
-
 if(find_bzip2)
   find_package(BZip2)
   if(BZIP2_FOUND)

@@ -9,6 +9,9 @@ if(find_lzma)
   endif()
 endif()
 
-set(xz_cmake_args)
+set(xz_cmake_args
+-DXZ_DOC:BOOL=false
+-DBUILD_TESTING:BOOL=false
+)
 
 extproj_cmake(xz "${lzma_url}" "${xz_cmake_args}" "")
