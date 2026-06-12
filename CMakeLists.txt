@@ -137,6 +137,10 @@ COMMAND ${python_exe} -c "import zlib; t = b'Hi'; assert t == zlib.decompress(zl
 # set_property(TEST zlib PROPERTY PASS_REGULAR_EXPRESSION "${zlib_version}")
 # we don't use this test because Zlib-ng is currently used in legacy mode where it reports a 1.2.x version
 
+add_test(NAME zstd
+COMMAND ${python_exe} -c "import compression.zstd; t = b'Hi'; assert t == compression.zstd.decompress(compression.zstd.compress(t))"
+)
+
 # https://docs.python.org/3/library/ssl.html
 add_test(NAME SSL COMMAND ${python_exe} -c "import ssl; print(ssl.OPENSSL_VERSION)")
 set_property(TEST SSL PROPERTY PASS_REGULAR_EXPRESSION "OpenSSL ${ssl_version}")
