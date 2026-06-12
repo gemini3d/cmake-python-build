@@ -111,6 +111,10 @@ endif()
 add_test(NAME PythonVersion COMMAND ${python_exe} --version)
 set_property(TEST PythonVersion PROPERTY PASS_REGULAR_EXPRESSION "Python ${python_version}")
 
+add_test(NAME decimal
+COMMAND ${python_exe} -c "import decimal; print(decimal.__version__)"
+)
+
 # https://docs.python.org/3/library/pyexpat.html
 add_test(NAME expat
 COMMAND ${python_exe} -c "import xml.parsers.expat; p = xml.parsers.expat.ParserCreate(); p.Parse('<?xml version=\"1.0\"?>')"
