@@ -83,7 +83,7 @@ endif()
 # https://github.com/zlib-ng/zlib-ng/releases
 string(JSON zlib_version GET ${json} "zlib")
 
-set(bzip2_url "https://gitlab.com/bzip2/bzip2/-/archive/${bzip_version}/bzip2-${bzip_version}.tar.bz2")
+set(bzip2_url "https://sourceware.org/pub/bzip2/bzip2-${bzip_version}.tar.gz")
 
 set(expat_url "https://github.com/libexpat/libexpat/archive/refs/tags/R_${expat_version}.tar.gz")
 
