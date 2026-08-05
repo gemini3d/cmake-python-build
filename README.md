@@ -6,7 +6,16 @@ and Python prerequisite libraries using CMake ExternalProject and Autotools.
 Tested with Python 3.11 ... 3.15 and newer.
 
 This project is a thin use of CMake ExternalProject to build Python via Python project's Autotools scripts.
-We must use ExternalProject instead of FetchContent because non-CMake packages may post-process the binary files and so FetchContent isn't suitable as we need the install step for the prereqs before Python.
+We must use ExternalProject instead of FetchContent because non-CMake packages may post-process the binary files and so FetchContent isn't suitable as we need the install step for the prerequisitess before Python.
+
+The prerequisites that are auto-built if needed include:
+
+* BZip2
+* Expat
+* FFI
+* LZMA
+* OpenSSL
+* Zlib
 
 ## Build
 
@@ -26,7 +35,7 @@ That makes binaries including: ~/python-local/bin/[python3,pip3].
 If the system has graphical capabilities, this built Python will work with Matplotlib, etc.
 
 Typical config log for Linux (just before install step) is like the following.
-In particular, lzma and ssl should not be missing.
+In particular, lzma, ssl, or ctypes should not be missing.
 
 ```
 The necessary bits to build these optional modules were not found:
@@ -58,7 +67,7 @@ Checked 114 modules (36 built-in, 77 shared, 0 n/a on macosx-26.0-arm64, 0 disab
 [zlib-ng](https://docs.python.org/3.14/whatsnew/3.14.html#zlib)
 is used to build Zlib if needed.
 
-To use system OpenSSL while building other prereqs:
+To use system OpenSSL while building other prerequisites:
 
 ```sh
 cmake -Bbuild -Dfind=no -Dfind_ssl=yes
