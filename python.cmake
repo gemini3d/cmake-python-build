@@ -12,9 +12,15 @@ set(python_args
 CC=${CMAKE_C_COMPILER}
 CXX=${CMAKE_CXX_COMPILER}
 )
+if(BUILD_SHARED_LIBS)
+  list(APPEND python_args --enable-shared)
+endif()
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   # https://docs.python.org/3/using/configure.html#cmdoption-enable-optimizations
   list(APPEND python_args --enable-optimizations)
+  if(BUILD_SHARED_LIBS AND CMAKE_C_COMPILER_ID STREQUAL "GNU")
+    string(APPEND CMAKE_C_FLAGS " -fno-semantic-interposition")
+  endif()
 endif()
 if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13")
   list(APPEND python_args --enable-experimental-jit)

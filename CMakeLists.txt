@@ -38,6 +38,16 @@ include(GNUInstallDirs)
 
 include(options.cmake)
 
+set(terminal_verbose
+USES_TERMINAL_DOWNLOAD true
+USES_TERMINAL_UPDATE true
+USES_TERMINAL_PATCH true
+USES_TERMINAL_CONFIGURE true
+USES_TERMINAL_BUILD true
+USES_TERMINAL_INSTALL true
+USES_TERMINAL_TEST true
+)
+
 if(NOT WIN32)
   include(cmake/ExtProjCMake.cmake)
   include(cmake/ExtProjAutotools.cmake)
