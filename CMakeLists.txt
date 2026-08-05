@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24...4.3)
+cmake_minimum_required(VERSION 3.20...4.5)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   message(FATAL_ERROR "Use out of source build
@@ -18,17 +18,6 @@ if(NOT CMAKE_BUILD_TYPE)
   else()
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Release default")
   endif()
-endif()
-
-# -- must override compiler to be gcc on Linux and clang on Macos.
-# otherwise, Autotools is too shaky.
-# Intel compiler icx/icpx works but is more than 100x slower to build.
-if(APPLE)
-  set(CMAKE_C_COMPILER clang)
-  set(CMAKE_CXX_COMPILER clang++)
-elseif(UNIX)
-  set(CMAKE_C_COMPILER gcc)
-  set(CMAKE_CXX_COMPILER g++)
 endif()
 
 project(CPython LANGUAGES C CXX)
