@@ -1,12 +1,18 @@
 # https://pythondev.readthedocs.io/windows.html
+# build.bat uses NuGet to download a local Python install just for build patches.
+#
+# ARM64 bugs
+# https://github.com/python/cpython/issues/153668
 
 set(python_args)
 
-if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13")
+if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13" AND
+   NOT CMAKE_SYSTEM_PROCESSOR MATCHES "ARM64")
   list(APPEND python_args --experimental-jit)
 endif()
 
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "ARM64")
+# even with Python 3.15.0, ARM64 CPU will default to x64.
   list(APPEND python_args -p ARM64)
   #list(APPEND python_args "/p:PlatformToolset=v145")
 endif()
