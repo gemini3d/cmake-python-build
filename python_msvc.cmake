@@ -1,9 +1,5 @@
 # https://pythondev.readthedocs.io/windows.html
 
-if(NOT MSVC)
-  message(FATAL_ERROR "Python building on Windows requires Visual Studio.")
-endif()
-
 set(python_args)
 
 if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13")

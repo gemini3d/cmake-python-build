@@ -29,11 +29,6 @@ if(APPLE)
 elseif(UNIX)
   set(CMAKE_C_COMPILER gcc)
   set(CMAKE_CXX_COMPILER g++)
-elseif(WIN32)
-  set(CMAKE_C_COMPILER cl)
-  set(CMAKE_CXX_COMPILER cl)
-else()
-  message(FATAL_ERROR "Unsupported platform ${CMAKE_SYSTEM_NAME}")
 endif()
 
 project(CPython LANGUAGES C CXX)
@@ -43,9 +38,8 @@ include(GNUInstallDirs)
 
 include(options.cmake)
 
-include(cmake/ExtProjCMake.cmake)
-
 if(NOT WIN32)
+  include(cmake/ExtProjCMake.cmake)
   include(cmake/ExtProjAutotools.cmake)
 endif()
 
