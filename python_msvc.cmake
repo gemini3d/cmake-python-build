@@ -11,10 +11,10 @@ if(python_jit AND python_version VERSION_GREATER_EQUAL "3.13" AND
   list(APPEND python_args --experimental-jit)
 endif()
 
+# even with Python 3.15.0, ARM64 CPU will default to x64, but fails to build as of 3.15.0rc1
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "ARM64")
-# even with Python 3.15.0, ARM64 CPU will default to x64.
-  list(APPEND python_args -p ARM64)
-  #list(APPEND python_args "/p:PlatformToolset=v145")
+  #list(APPEND python_args -p ARM64)  # this should work, but doesn't yet with 3.15.0rc1
+  #list(APPEND python_args "/p:PlatformToolset=v145")  # also didn't help
 endif()
 
 if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.2")
